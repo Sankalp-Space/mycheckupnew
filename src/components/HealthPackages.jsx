@@ -2,6 +2,7 @@
 // Pixel-matched to provided design
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Heart, Activity, Droplet, Users, ArrowRight } from "lucide-react";
 
 const packages = [
@@ -85,9 +86,13 @@ const HealthPackages = () => {
                 {pkg.discount}
               </span>
 
-              <button className="mt-8 w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 transition text-white py-4 rounded-xl font-semibold">
+              <motion.button
+                className="mt-8 w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 transition text-white py-4 rounded-xl font-semibold"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 Book Now <ArrowRight size={18} />
-              </button>
+              </motion.button>
             </div>
           ))}
         </div>

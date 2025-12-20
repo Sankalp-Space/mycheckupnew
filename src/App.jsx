@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
-import Navbar from './components/Navbar'
-import HomeHero from './components/HomeHero'
-import HealthPackages from './components/HealthPackages'
-import DiagnosticCategories from './components/DiagnosticCategories'
-import WhyMyCheckup from './components/WhyMyCheckup'
-import HomeSampleCollection from './components/HomeSampleCollection'
-import CustomerReviews from './components/CustomerReviews'
-import Footer from './components/Footer'
-import DiscountPopup from './components/DiscountPopup'
+import { useState, useEffect, lazy, Suspense } from 'react'
+
+const Navbar = lazy(() => import('./components/Navbar'))
+const HomeHero = lazy(() => import('./components/HomeHero'))
+const HealthPackages = lazy(() => import('./components/HealthPackages'))
+const DiagnosticCategories = lazy(() => import('./components/DiagnosticCategories'))
+const WhyMyCheckup = lazy(() => import('./components/WhyMyCheckup'))
+const HomeSampleCollection = lazy(() => import('./components/HomeSampleCollection'))
+const CustomerReviews = lazy(() => import('./components/CustomerReviews'))
+const Footer = lazy(() => import('./components/Footer'))
+const DiscountPopup = lazy(() => import('./components/DiscountPopup'))
 
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -26,15 +27,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-      <HomeHero />
-      <HealthPackages />
-      <DiagnosticCategories />
-      <WhyMyCheckup />
-      <HomeSampleCollection />
-      <CustomerReviews />
-      <Footer/>
-      <DiscountPopup open={isPopupOpen} onClose={handleClosePopup} />
+      <Suspense fallback={<div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div></div>}>
+        <Navbar />
+        <HomeHero />
+        <HealthPackages />
+        <DiagnosticCategories />
+        <WhyMyCheckup />
+        <HomeSampleCollection />
+        <CustomerReviews />
+        <Footer/>
+        <DiscountPopup open={isPopupOpen} onClose={handleClosePopup} />
+      </Suspense>
       {/* Add more sections here as you provide descriptions */}
     </div>
   )
