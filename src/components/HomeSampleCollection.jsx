@@ -26,7 +26,7 @@ export default function HomeSampleCollection() {
           Simple, safe, and hassle-free process from booking to reports
         </p>
 
-        <div className="mt-14 flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto relative">
+        <div className="mt-14 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto relative">
           {/* Connecting Line */}
           <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-blue-600" />
           {[

@@ -9,6 +9,7 @@ import {
   Linkedin,
   Youtube,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
@@ -52,12 +53,12 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Tests</h4>
           <ul className="space-y-3 text-sm">
-            <li>Blood Tests</li>
-            <li>Health Packages</li>
-            <li>Women Health</li>
-            <li>Men Health</li>
-            <li>Senior Citizen</li>
-            <li>COVID-19 Tests</li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Blood Tests</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Health Packages</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Women Health</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Men Health</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Senior Citizen</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>COVID-19 Tests</motion.li>
           </ul>
         </div>
 
@@ -65,12 +66,12 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Company</h4>
           <ul className="space-y-3 text-sm">
-            <li>About Us</li>
-            <li>Quality Assurance</li>
-            <li>Certifications</li>
-            <li>Media Coverage</li>
-            <li>Partnerships</li>
-            <li>Careers</li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>About Us</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Quality Assurance</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Certifications</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Media Coverage</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Partnerships</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Careers</motion.li>
           </ul>
         </div>
 
@@ -78,11 +79,11 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Help Center</h4>
           <ul className="space-y-3 text-sm">
-            <li>FAQs</li>
-            <li>Contact Us</li>
-            <li>Book a Test</li>
-            <li>Track Order</li>
-            <li>Download Reports</li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>FAQs</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Contact Us</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Book a Test</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Track Order</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Download Reports</motion.li>
           </ul>
         </div>
 
@@ -90,12 +91,12 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Top Cities</h4>
           <ul className="space-y-3 text-sm">
-            <li>Delhi NCR</li>
-            <li>Mumbai</li>
-            <li>Bangalore</li>
-            <li>Chennai</li>
-            <li>Hyderabad</li>
-            <li className="text-blue-400">View All Cities</li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Delhi NCR</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Mumbai</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Bangalore</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Chennai</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Hyderabad</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }} className="text-blue-400">View All Cities</motion.li>
           </ul>
         </div>
       </div>
@@ -132,10 +133,10 @@ export default function Footer() {
         <div className="max-w-9xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <p>© 2025 MY Checkup. All rights reserved.</p>
           <div className="flex gap-6">
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-            <span>Cookie Policy</span>
-            <span>Disclaimer</span>
+            <motion.span whileHover={{ color: "#60a5fa" }} transition={{ duration: 0.2 }}>Privacy Policy</motion.span>
+            <motion.span whileHover={{ color: "#60a5fa" }} transition={{ duration: 0.2 }}>Terms of Service</motion.span>
+            <motion.span whileHover={{ color: "#60a5fa" }} transition={{ duration: 0.2 }}>Cookie Policy</motion.span>
+            <motion.span whileHover={{ color: "#60a5fa" }} transition={{ duration: 0.2 }}>Disclaimer</motion.span>
           </div>
         </div>
       </div>
