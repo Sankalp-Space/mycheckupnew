@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <header className="w-full border-b bg-white">
       {/* Top Bar */}
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-8xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
@@ -25,14 +25,16 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-6">
-          {/* City Selector */}
-          <button className="hidden sm:flex items-center gap-2 border rounded-xl px-4 py-2 text-sm font-medium">
+        {/* City Selector - Centered */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:block">
+          <button className="flex items-center gap-2 border rounded-xl px-4 py-2 text-sm font-medium">
             <MapPin size={16} className="text-blue-600" />
             Select Your City
           </button>
+        </div>
 
+        {/* Right Actions */}
+        <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center gap-5 text-sm">
             <span className="flex items-center gap-1 cursor-pointer text-slate-700">
               <HelpCircle size={16} /> Help & Support

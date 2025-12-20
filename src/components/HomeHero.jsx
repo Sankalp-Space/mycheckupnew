@@ -93,14 +93,29 @@ const HomeHero = () => {
           </motion.div>
 
           {/* CTA Buttons */}
-          <div className="mt-10 flex flex-wrap gap-6">
-            <button className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 transition text-white px-10 py-4 rounded-xl font-semibold">
+          <motion.div
+            className="mt-10 flex flex-wrap gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <motion.button
+              className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 transition text-white px-10 py-4 rounded-xl font-semibold"
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               Lab Tests <ArrowRight size={18} />
-            </button>
-            <button className="flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 transition px-10 py-4 rounded-xl font-semibold">
+            </motion.button>
+            <motion.button
+              className="flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 transition px-10 py-4 rounded-xl font-semibold"
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               Health Checkups <ArrowRight size={18} />
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
 
         {/* RIGHT IMAGE CARD */}

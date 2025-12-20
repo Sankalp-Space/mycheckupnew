@@ -1,4 +1,4 @@
- # TODO: Make Website Dynamic with Good UI, Lazy Loading, and Responsiveness
+# TODO: Make Website Dynamic with Good UI, Lazy Loading, and Responsiveness
 
 ## Steps to Complete
 
@@ -7,4 +7,5 @@
 - [x] Update src/components/HomeHero.jsx: Add dynamic search state, functionality, and Framer Motion animations
 - [x] Update src/components/Navbar.jsx: Add mobile hamburger menu toggle and animations
 - [x] Update src/components/HealthPackages.jsx: Add hover animations and dynamic pricing display with Framer Motion
+- [x] Add scale-up effects and transitions to all components for enhanced UI
 - [x] Test the app for performance improvements, responsiveness, and ensure no console errors

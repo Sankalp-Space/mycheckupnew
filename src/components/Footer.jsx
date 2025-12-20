@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-[#0B1C2D] to-[#081524] text-gray-300">
       {/* Top */}
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+      <div className="max-w-9xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
         {/* Brand */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center gap-3">
@@ -104,7 +104,7 @@ export default function Footer() {
       <div className="border-t border-white/10" />
 
       {/* Middle */}
-      <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="max-w-9xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex gap-4">
           {[Facebook, Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
             <div
@@ -129,7 +129,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+        <div className="max-w-9xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <p>© 2025 MY Checkup. All rights reserved.</p>
           <div className="flex gap-6">
             <span>Privacy Policy</span>

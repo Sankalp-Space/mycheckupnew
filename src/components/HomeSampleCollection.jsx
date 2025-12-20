@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   MousePointerClick,
   MapPin,
@@ -26,6 +27,8 @@ export default function HomeSampleCollection() {
         </p>
 
         <div className="mt-14 flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto relative">
+          {/* Connecting Line */}
+          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-blue-600" />
           {[
             {
               step: "Step 1",
@@ -60,16 +63,16 @@ export default function HomeSampleCollection() {
           ].map((item, i) => {
             const Icon = item.icon;
             return (
-              <div key={i} className="flex flex-col items-center text-center md:w-1/5 relative">
+              <div
+                key={i}
+                className="flex flex-col items-center text-center md:w-1/5 relative z-10"
+              >
                 <div className="w-24 h-24 rounded-full border-4 border-blue-600 flex items-center justify-center bg-white">
                   <Icon className="w-10 h-10 text-blue-600" />
                 </div>
                 <span className="mt-3 text-sm text-blue-600 font-semibold">{item.step}</span>
                 <h4 className="mt-2 font-semibold text-[#0B2B4C]">{item.title}</h4>
                 <p className="text-sm text-gray-500 mt-1 px-2">{item.desc}</p>
-                {i !== 4 && (
-                  <div className="hidden md:block absolute top-12 left-full w-full h-[2px] bg-blue-600" />
-                )}
               </div>
             );
           })}
@@ -96,16 +99,20 @@ export default function HomeSampleCollection() {
           ].map((stat, i) => {
             const Icon = stat.icon;
             return (
-              <div
+              <motion.div
                 key={i}
                 className="bg-white rounded-2xl shadow-lg py-10 px-4 text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
               >
                 <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-blue-50 flex items-center justify-center">
                   <Icon className="w-7 h-7 text-blue-600" />
                 </div>
                 <h3 className="text-3xl font-bold text-[#0B2B4C]">{stat.value}</h3>
                 <p className="text-gray-500 mt-2 text-sm">{stat.label}</p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

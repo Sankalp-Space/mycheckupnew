@@ -54,9 +54,11 @@ const HealthPackages = () => {
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg, index) => (
-            <div
+            <motion.div
               key={index}
               className="relative border rounded-3xl p-8 text-left shadow-sm hover:shadow-lg transition"
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               {pkg.popular && (
                 <span className="absolute -top-4 left-6 bg-pink-500 text-white text-sm px-4 py-1 rounded-full">
@@ -93,7 +95,7 @@ const HealthPackages = () => {
               >
                 Book Now <ArrowRight size={18} />
               </motion.button>
-            </div>
+            </motion.div>
           ))}
         </div>
 
