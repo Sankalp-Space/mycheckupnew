@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   MousePointerClick,
@@ -14,7 +14,74 @@ import {
   FlaskConical,
 } from "lucide-react";
 
+const parseStatValue = (value) => {
+  const num = parseFloat(value.replace(/[^\d.]/g, ''));
+  const suffix = value.replace(/[\d.]/g, '');
+  let multiplier = 1;
+  if (suffix.includes('M')) multiplier = 1000000;
+  else if (suffix.includes('K')) multiplier = 1000;
+  return Math.floor(num * multiplier);
+};
+
 export default function HomeSampleCollection() {
+  const [counts, setCounts] = useState([0, 0, 0, 0, 0, 0]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = useRef(null);
+
+  const stats = [
+    { value: "5M+", label: "Customers Served", icon: Users },
+    { value: "50K+", label: "Tests Processed Everyday", icon: TestTube },
+    { value: "500+", label: "Cities Covered", icon: MapPinned },
+    { value: "1200+", label: "Collection Centres", icon: Building2 },
+    { value: "2000+", label: "Home Collection Experts", icon: UserCheck },
+    { value: "25+", label: "In-House Labs", icon: FlaskConical },
+  ];
+
+  const targetCounts = stats.map(stat => parseStatValue(stat.value));
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          targetCounts.forEach((target, index) => {
+            let current = 0;
+            const increment = target / 60; // 60 frames for 1 second
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              setCounts(prev => {
+                const newCounts = [...prev];
+                newCounts[index] = Math.floor(current);
+                return newCounts;
+              });
+            }, 1000 / 60);
+          });
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, [hasAnimated, targetCounts]);
+
+  const formatCount = (count, originalValue) => {
+    const suffix = originalValue.replace(/[\d.]/g, '');
+    if (suffix.includes('M')) return `${(count / 1000000).toFixed(1)}M+`;
+    if (suffix.includes('K')) return `${(count / 1000).toFixed(0)}K+`;
+    return `${count}+`;
+  };
   return (
     <div className="w-full font-sans">
       {/* Top Section */}
@@ -88,15 +155,8 @@ export default function HomeSampleCollection() {
           Your health, backed by numbers that matter
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 mt-14 max-w-7xl mx-auto">
-          {[
-            { value: "5M+", label: "Customers Served", icon: Users },
-            { value: "50K+", label: "Tests Processed Everyday", icon: TestTube },
-            { value: "500+", label: "Cities Covered", icon: MapPinned },
-            { value: "1200+", label: "Collection Centres", icon: Building2 },
-            { value: "2000+", label: "Home Collection Experts", icon: UserCheck },
-            { value: "25+", label: "In-House Labs", icon: FlaskConical },
-          ].map((stat, i) => {
+        <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 mt-14 max-w-7xl mx-auto">
+          {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
               <motion.div
@@ -110,7 +170,7 @@ export default function HomeSampleCollection() {
                 <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-blue-50 flex items-center justify-center">
                   <Icon className="w-7 h-7 text-blue-600" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#0B2B4C]">{stat.value}</h3>
+                <h3 className="text-3xl font-bold text-[#0B2B4C]">{formatCount(counts[i], stat.value)}</h3>
                 <p className="text-gray-500 mt-2 text-sm">{stat.label}</p>
               </motion.div>
             );
