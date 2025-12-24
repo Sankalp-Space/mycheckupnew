@@ -1,110 +1,93 @@
-// React + Tailwind CSS — Doctors Curated Health Checkup Packages Section
-// Pixel-matched to provided design
-
-import React from "react";
-import { motion } from "framer-motion";
 import { Heart, Activity, Droplet, Users, ArrowRight } from "lucide-react";
 
 const packages = [
   {
+    id: 1,
     title: "Full Body Checkup",
-    tests: "75 Tests included",
+    tests: "75 Tests Included",
     price: "₹1,499",
-    oldPrice: "₹3,999",
-    discount: "63% OFF",
+    oldPrice: "₹2,999",
+    off: "50% OFF",
     popular: true,
-    icon: <Heart className="text-blue-600" />
+    icon: <Activity className="w-8 h-8 text-[#D8BFD8]" />,
   },
   {
+    id: 2,
     title: "Vital Health Screening",
-    tests: "45 Tests included",
+    tests: "45 Tests Included",
     price: "₹999",
     oldPrice: "₹2,499",
-    discount: "60% OFF",
-    icon: <Activity className="text-blue-600" />
+    off: "60% OFF",
+    icon: <Heart className="w-8 h-8 text-[#D8BFD8]" />,
   },
   {
+    id: 3,
     title: "Diabetes Care Package",
-    tests: "20 Tests included",
+    tests: "20 Tests Included",
     price: "₹599",
     oldPrice: "₹1,299",
-    discount: "54% OFF",
-    icon: <Droplet className="text-blue-600" />
+    off: "54% OFF",
+    icon: <Droplet className="w-8 h-8 text-[#D8BFD8]" />,
   },
   {
+    id: 4,
     title: "Family Health Package",
-    tests: "90 Tests included",
+    tests: "90 Tests Included",
     price: "₹2,999",
     oldPrice: "₹7,999",
-    discount: "63% OFF",
-    icon: <Users className="text-blue-600" />
-  }
+    off: "63% OFF",
+    icon: <Users className="w-8 h-8 text-[#D8BFD8]" />,
+  },
 ];
 
-const HealthPackages = () => {
+export default function HealthPackages() {
   return (
-    <section className="w-full py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-extrabold text-slate-900">
-          Doctors Curated Health Checkup Packages
-        </h2>
-        <p className="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">
-          Comprehensive health packages designed by medical experts for complete peace of mind
-        </p>
+    <section className="bg-[#e6cfe2] py-16">
+      <h2 className="text-3xl font-semibold text-center mb-2">
+        Doctors Curated Health Checkup Packages
+      </h2>
+      <p className="text-center text-gray-700 mb-10">
+        Comprehensive health packages designed by medical experts for complete peace of mind
+      </p>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {packages.map((pkg, index) => (
-            <motion.div
-              key={index}
-              className="relative border rounded-3xl p-8 text-left shadow-sm hover:shadow-lg transition"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              {pkg.popular && (
-                <span className="absolute -top-4 left-6 bg-pink-500 text-white text-sm px-4 py-1 rounded-full">
-                  Most Popular
-                </span>
-              )}
-
-              <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mb-6">
-                {pkg.icon}
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900">
-                {pkg.title}
-              </h3>
-              <p className="text-slate-500 mt-1 text-sm">{pkg.tests}</p>
-
-              <div className="mt-6">
-                <span className="text-3xl font-extrabold text-slate-900">
-                  {pkg.price}
-                </span>
-                <span className="ml-3 text-slate-400 line-through">
-                  {pkg.oldPrice}
-                </span>
-              </div>
-
-              <span className="inline-block mt-3 bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full">
-                {pkg.discount}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
+        {packages.map((item) => (
+          <div
+            key={item.id}
+            className="relative bg-white rounded-2xl p-6 border border-transparent transition-all duration-300 hover:border-2 hover:border-[#D8BFD8] hover:scale-105 hover:shadow-lg"
+          >
+            {item.popular && (
+              <span className="absolute -top-3 left-6 bg-[#D8BFD8] text-white text-xs px-4 py-1 rounded-full">
+                Most Popular
               </span>
+            )}
 
-              <motion.button
-                className="mt-8 w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 transition text-white py-4 rounded-xl font-semibold"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Book Now <ArrowRight size={18} />
-              </motion.button>
-            </motion.div>
-          ))}
-        </div>
+            <button className="absolute top-4 right-4 group">
+              <Heart className="w-5 h-5 text-gray-300 group-hover:fill-red-500 group-hover:text-red-500 transition" />
+            </button>
 
-        <button className="mt-16 inline-flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 transition px-10 py-4 rounded-full font-semibold">
-          View All Packages
-        </button>
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[#f3eaf2] flex items-center justify-center">
+              {item.icon}
+            </div>
+
+            <h3 className="text-lg font-semibold text-center mb-1">{item.title}</h3>
+            <p className="text-sm text-gray-500 text-center mb-4">{item.tests}</p>
+
+            <div className="text-center mb-2">
+              <span className="text-2xl font-semibold mr-2">{item.price}</span>
+              <span className="text-gray-400 line-through">{item.oldPrice}</span>
+            </div>
+
+            <p className="text-green-600 text-sm text-center mb-6">{item.off}</p>
+
+            <button
+              className="w-full bg-[#D8BFD8] text-white py-3 rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-102"
+            >
+              Book Now <ArrowRight size={16} />
+            </button>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default HealthPackages;
+}
