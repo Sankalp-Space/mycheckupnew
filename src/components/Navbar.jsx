@@ -1,127 +1,65 @@
-// React + Tailwind CSS Navbar Component (JS)
-// Pixel-aligned to provided MyCheckup navbar
+import { useState } from "react";
+import { Phone } from "lucide-react";
+import NavItem from "./NavItem";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Phone, HelpCircle, User, Menu, X } from "lucide-react";
+const navLinks = [
+  "Home",
+  "Test Packages",
+  "Xrays & Scans",
+  "Dental Checkup",
+  "Help & Support",
+  "More",
+];
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+export default function Navbar() {
+  const [active, setActive] = useState("Test Packages");
 
   return (
     <header className="w-full border-b bg-white">
-      {/* Top Bar */}
-      <div className="max-w-8xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
-            MC
-          </div>
-          <div>
-            <h1 className="font-semibold text-lg leading-none">My Checkup</h1>
-            <p className="text-xs text-slate-500">Your Health, Our Priority</p>
-          </div>
-        </div>
-
-        {/* City Selector - Centered */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:block">
-          <button className="flex items-center gap-2 border rounded-xl px-4 py-2 text-sm font-medium">
-            <MapPin size={16} className="text-blue-600" />
-            Select Your City
-          </button>
-        </div>
-
-        {/* Right Actions */}
-        <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-5 text-sm">
-            <span className="flex items-center gap-1 cursor-pointer text-slate-700">
-              <HelpCircle size={16} /> Help & Support
-            </span>
-            <span className="flex items-center gap-1 cursor-pointer text-slate-700">
-              <User size={16} /> Login
-            </span>
-            <span className="flex items-center gap-1 font-semibold text-blue-600">
-              <Phone size={16} /> 1800-123-4567
-            </span>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-            onClick={toggleMenu}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+      {/* Top purple strip */}
+      <div className="bg-[#4B2E4B] text-white text-sm w-full">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+          <span><Phone size={16} className="text-white inline mr-1" /> +91 123-456-7890    |    Available 24/7 for Sample Collection</span>
+          <span>Download App | Partner With Us</span>
         </div>
       </div>
 
-      {/* Navigation Links */}
-      <nav className="border-t">
-        <div className="max-w-7xl mx-auto px-6">
-          <ul className="hidden md:flex flex-wrap gap-8 py-3 text-sm font-medium text-slate-700">
-            <li className="hover:text-blue-600 cursor-pointer">Home</li>
-            <li className="hover:text-blue-600 cursor-pointer">Tests</li>
-            <li className="hover:text-blue-600 cursor-pointer">Packages</li>
-            <li className="hover:text-blue-600 cursor-pointer">Locations</li>
-            <li className="hover:text-blue-600 cursor-pointer">Health Blog</li>
-            <li className="hover:text-blue-600 cursor-pointer">Who We Are</li>
-            <li className="hover:text-blue-600 cursor-pointer">Quality Assurance</li>
-            <li className="hover:text-blue-600 cursor-pointer">Partnerships</li>
-            <li className="hover:text-blue-600 cursor-pointer">Media Coverage</li>
-            <li className="hover:text-blue-600 cursor-pointer">X-Rays & Scans</li>
-            <li className="hover:text-blue-600 cursor-pointer">Help & Support</li>
-          </ul>
+      {/* Main navbar */}
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
+        {/* Logo */}
+        <div className="flex items-center gap-3 cursor-pointer group">
+          <div className="w-12 h-12 rounded-xl bg-[#4B2E4B] text-white flex items-center justify-center text-xl font-bold
+                          transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-105">
+            M
+          </div>
+          <div>
+            <p className="text-xl font-bold">MYCheckup</p>
+            <p className="text-xs text-gray-500">HEALTH AT HOME</p>
+          </div>
+        </div>
 
-          {/* Mobile Menu */}
-          <motion.div
-            className="md:hidden overflow-hidden"
-            initial={false}
-            animate={{ height: isMenuOpen ? "auto" : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="py-4 space-y-4">
-              {/* Mobile City Selector */}
-              <button className="flex items-center gap-2 border rounded-xl px-4 py-2 text-sm font-medium w-full justify-center">
-                <MapPin size={16} className="text-blue-600" />
-                Select Your City
-              </button>
+        {/* Nav links */}
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <NavItem
+              key={link}
+              label={link}
+              active={active === link}
+              onClick={() => setActive(link)}
+            />
+          ))}
+        </ul>
 
-              {/* Mobile Navigation Links */}
-              <ul className="space-y-3 text-sm font-medium text-slate-700">
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Home</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Tests</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Packages</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Locations</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Health Blog</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Who We Are</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Quality Assurance</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Partnerships</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Media Coverage</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">X-Rays & Scans</li>
-                <li className="hover:text-blue-600 cursor-pointer py-2 border-b">Help & Support</li>
-              </ul>
-
-              {/* Mobile Contact Info */}
-              <div className="flex flex-col gap-3 pt-4 border-t">
-                <span className="flex items-center gap-2 cursor-pointer text-slate-700">
-                  <HelpCircle size={16} /> Help & Support
-                </span>
-                <span className="flex items-center gap-2 cursor-pointer text-slate-700">
-                  <User size={16} /> Login
-                </span>
-                <span className="flex items-center gap-2 font-semibold text-blue-600">
-                  <Phone size={16} /> 1800-123-4567
-                </span>
-              </div>
-            </div>
-          </motion.div>
+        {/* Buttons */}
+        <div className="flex gap-4">
+          <button className="px-5 py-2 border border-[#4B2E4B] rounded-full text-[#4B2E4B] hover:bg-[#4B2E4B] hover:text-white transition">
+            Login
+          </button>
+          <button className="px-6 py-2 rounded-full bg-[#4B2E4B] text-white hover:opacity-90 transition">
+            Book Test Now
+          </button>
         </div>
       </nav>
     </header>
   );
-};
-
-export default Navbar;
+}

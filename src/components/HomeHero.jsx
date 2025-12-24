@@ -1,158 +1,109 @@
-// React + Tailwind CSS Home Hero Section (JS)
-// Designed to visually match the provided MyCheckup home section
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Search, Tag, Clock, Home, BadgeCheck, ArrowRight } from "lucide-react";
-
-const HomeHero = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Simulate search functionality
-    const mockResults = [
-      "Blood Test",
-      "Diabetes Package",
-      "Full Body Checkup",
-      "Thyroid Test"
-    ].filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()));
-    setSearchResults(mockResults);
-  };
-
+export default function HeroSection() {
   return (
-    <motion.section
-      className="w-full bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    <section className="bg-[#D8BFD8] py-14 px-4">
+      <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
 
-        {/* LEFT CONTENT */}
-        <div>
-          <h1 className="text-5xl font-extrabold leading-tight text-slate-900">
-            Affordable Health <br /> Tests at Home
-          </h1>
-          <p className="mt-4 text-lg text-slate-600">
-            NABL certified labs • Free home collection • Reports in 24–48 hours
-          </p>
+          {/* LEFT CONTENT */}
+          <div className="p-10 lg:p-14">
+            {/* Slider arrows */}
+            <div className="flex items-center gap-3 mb-6">
+              <button className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-gray-100">
+                ‹
+              </button>
+              <button className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-gray-100">
+                ›
+              </button>
+            </div>
 
-          {/* Search Bar */}
-          <motion.div
-            className="mt-8 flex items-center bg-white rounded-full shadow-lg px-5 py-3 max-w-xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Search className="text-slate-400" size={20} />
-            <input
-              type="text"
-              placeholder="Search tests, health packages & profiles"
-              className="flex-1 px-4 outline-none text-slate-700"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <motion.button
-              className="bg-slate-400 hover:bg-slate-500 transition text-white rounded-full px-8 py-2 text-sm font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleSearch}
-            >
-              Search
-            </motion.button>
-          </motion.div>
-          {searchResults.length > 0 && (
-            <motion.div
-              className="mt-4 bg-white rounded-lg shadow-lg p-4 max-w-xl"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h4 className="font-semibold text-slate-900 mb-2">Search Results:</h4>
-              <ul className="space-y-1">
-                {searchResults.map((result, index) => (
-                  <li key={index} className="text-slate-700">{result}</li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
+            <p className="text-sm text-gray-500 mb-2">
+              Prevention is better than cure
+            </p>
 
-          {/* Feature Pills */}
-          <motion.div
-            className="mt-6 flex flex-wrap gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <Pill icon={<Tag size={16} />} text="₹500 off on first test" />
-            <Pill icon={<Clock size={16} />} text="6-hour sample collection" />
-            <Pill icon={<Home size={16} />} text="Free home collection" />
-            <Pill icon={<BadgeCheck size={16} />} text="NABL certified labs" />
-          </motion.div>
+            <h1 className="text-4xl font-bold text-gray-900 leading-snug">
+              Affordable Health Tests <br /> at home
+            </h1>
 
-          {/* CTA Buttons */}
-          <motion.div
-            className="mt-10 flex flex-wrap gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <motion.button
-              className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 transition text-white px-10 py-4 rounded-xl font-semibold"
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Lab Tests <ArrowRight size={18} />
-            </motion.button>
-            <motion.button
-              className="flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 transition px-10 py-4 rounded-xl font-semibold"
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Health Checkups <ArrowRight size={18} />
-            </motion.button>
-          </motion.div>
-        </div>
+            {/* Green ticks */}
+            <div className="flex flex-wrap gap-4 mt-4 text-sm">
+              {[
+                "NABL Certified",
+                "24–48 Hour Reports",
+                "Free Home Sample Collection",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="flex items-center gap-2 text-green-600"
+                >
+                  ✔ {item}
+                </span>
+              ))}
+            </div>
 
-        {/* RIGHT IMAGE CARD */}
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="rounded-3xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d"
-              alt="Doctor"
-              className="w-full h-[520px] object-cover"
-            />
-            <div className="absolute bottom-6 left-6 right-6 bg-white/20 backdrop-blur-lg rounded-2xl p-6 text-white">
-              <h3 className="text-2xl font-bold">Premium Quality Standards</h3>
-              <p className="text-sm mt-1 opacity-90">
-                State-of-the-art labs with certified professionals
-              </p>
-              {/* <div className="mt-4 flex justify-center gap-2">
-                <span className="w-6 h-1 rounded-full bg-white"></span>
-                <span className="w-2 h-1 rounded-full bg-white/50"></span>
-                <span className="w-2 h-1 rounded-full bg-white/50"></span>
-              </div> */}
+            {/* Pills */}
+            <div className="flex flex-wrap gap-3 mt-6">
+              {[
+                "₹500 off on first test",
+                "6-hour sample collection",
+                "Free home collection",
+                "NABL certified labs",
+              ].map((pill) => (
+                <span
+                  key={pill}
+                  className="px-4 py-2 text-sm rounded-full bg-[#F4ECF4] text-[#4B2E4B] border border-[#E6D6E6]"
+                >
+                  {pill}
+                </span>
+              ))}
             </div>
           </div>
-        </motion.div>
+
+          {/* RIGHT IMAGE */}
+          <div className="bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-10">
+            <img
+              src="/ImageWithFallback.png"
+              alt="Doctor"
+              className="max-h-[420px] object-contain"
+            />
+          </div>
+        </div>
+
+        {/* SEARCH BAR SECTION */}
+        <div className="px-8 pb-8">
+          <div className="bg-white border rounded-2xl p-4 shadow-sm">
+            <div className="flex flex-col lg:flex-row items-center gap-4">
+
+              {/* Search */}
+              <div className="flex-1 w-full">
+                <input
+                  type="text"
+                  placeholder="Search for tests or checkups"
+                  className="w-full px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-[#4B2E4B]"
+                />
+              </div>
+
+              {/* Tabs */}
+              <div className="flex bg-gray-100 rounded-xl p-1">
+                <button className="px-5 py-2 rounded-lg bg-[#4B2E4B] text-white text-sm">
+                  Lab Tests
+                </button>
+                <button className="px-5 py-2 rounded-lg text-gray-600 text-sm">
+                  Checkups
+                </button>
+              </div>
+            </div>
+
+            {/* Offer strip */}
+            <div className="mt-4 bg-[#FFF3E6] border border-[#FFD8B2] rounded-xl px-4 py-3 text-sm text-gray-700 flex items-center gap-2">
+              🎉
+              <span>
+                Get <strong>15% OFF</strong> on orders above ₹500 | Use code:{" "}
+                <strong className="text-[#4B2E4B]">MYCHECK15</strong>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
-};
-
-const Pill = ({ icon, text }) => (
-  <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-200 text-blue-600 bg-blue-50 text-sm font-medium">
-    {icon} {text}
-  </div>
-);
-
-export default HomeHero;
+}
