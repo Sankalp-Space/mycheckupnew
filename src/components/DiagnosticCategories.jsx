@@ -55,7 +55,7 @@ export default function DiagnosticCategories() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl h-[170px] flex flex-col items-center justify-center shadow-sm hover:shadow-md transition"
+                className="bg-white rounded-2xl h-[170px] flex flex-col items-center justify-center shadow-sm hover:shadow-lg hover:scale-105 hover:bg-gray-50 transition-all duration-300"
               >
                 <div className="w-14 h-14 rounded-full bg-[#E9F4FF] flex items-center justify-center mb-4">
                   <Icon className="w-6 h-6 text-blue-600" />
