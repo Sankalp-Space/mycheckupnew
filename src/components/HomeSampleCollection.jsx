@@ -46,8 +46,19 @@ export default function HomeSampleCollection() {
       <div className="absolute right-24 top-48 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-[#edd6e6] to-transparent opacity-30 pointer-events-none blur-3xl"></div>
 
       <div className="max-w-6xl mx-auto text-center">
-        <div className="inline-flex items-center gap-4 mb-6">
-          <span className="px-4 py-1 rounded-full bg-white/20 text-sm text-white tracking-wider border border-white/10">OUR PROCESS</span>
+        <div className="flex items-center justify-center mb-6">
+          {/* Left Fading Line */}
+          <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-[#583D58] to-[#583D58]" />
+
+          {/* Center Button/Badge */}
+          <div className="mx-4 px-6 py-3 bg-[#F3E5F5] border border-[#CDB4CD] rounded-full shadow-sm">
+            <span className="text-[#4A4A4A] font-small tracking-widest uppercase text-medium">
+              Our Process
+            </span>
+          </div>
+
+          {/* Right Fading Line */}
+          <div className="h-[2px] w-24 bg-gradient-to-l from-transparent via-[#583D58] to-[#583D58]" />
         </div>
         <h2 className="text-4xl md:text-5xl font-semibold text-theme-dark mb-2">How Does Home Sample Collection Work?</h2>
         <p className="text-theme-text text-lg">Your health journey in 5 simple steps</p>
@@ -113,10 +124,10 @@ export default function HomeSampleCollection() {
 
       </div>
        <div className="flex justify-center mt-20">
-          <div className="cta-card bg-white rounded-2xl shadow-[0_18px_40px_rgba(80,40,70,0.08)] p-10 w-full max-w-5xl border border-[#5A2B4D]/10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <p className="text-theme-dark text-xl font-medium">Ready to experience hassle-free diagnostics at home?</p>
-              <button className="bg-theme-primary text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(90,43,77,0.28)] inline-flex items-center gap-3 hover:scale-105 transition-all duration-300">Schedule Your Home Collection <Sparkles /></button>
+          <div className="cta-card bg-white rounded-2xl shadow-[0_18px_40px_rgba(80,40,70,0.08)] p-8 w-full max-w-3xl border border-[#5A2B4D]/10">
+            <div className="flex flex-col items-center gap-6">
+              <p className="text-theme-dark text-xl font-medium text-center">Ready to experience hassle-free diagnostics at home?</p>
+              <button className="group bg-[#4B2E4B] text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(90,43,77,0.28)] inline-flex items-center gap-3 hover:scale-105 transition-all duration-300">Schedule Your Home Collection <Sparkles className="group-hover:rotate-12 transition-transform duration-300" /></button>
             </div>
           </div>
         </div>
