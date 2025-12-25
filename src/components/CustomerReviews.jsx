@@ -9,7 +9,7 @@ const reviews = [
     quote:
       "The home collection service was so convenient. Reports came within 24 hours!",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
-    featured: true,
+    poster: "/review1.jpg",
   },
   {
     name: "Rajesh Kumar",
@@ -17,6 +17,7 @@ const reviews = [
     city: "Delhi",
     quote: "Professional staff and accurate results. Highly recommended!",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    poster: "/review2.jpg",
   },
   {
     name: "Anita Desai",
@@ -24,6 +25,7 @@ const reviews = [
     city: "Bangalore",
     quote: "Best diagnostic service I’ve used. Very professional and caring.",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    poster: "/review3.jpg",
   },
 ];
 
@@ -37,33 +39,33 @@ export default function CustomerReviews() {
         Real stories from people who trust MYCheckup for their health
       </p>
 
-      <div className="mt-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      <div className="mt-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Featured Video */}
-        <div className="lg:col-span-2 relative rounded-3xl overflow-hidden shadow-xl">
+        <div className="lg:col-span-2 relative rounded-2xl overflow-hidden shadow-md">
           <video
             src={reviews[0].video}
-            className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1551076805-e1869033e561"
+            className="w-full h-96 object-contain"
+            poster={reviews[0].poster}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
           <button className="absolute inset-0 flex items-center justify-center">
-            <span className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-              <Play className="w-8 h-8 text-blue-600 fill-blue-600" />
+            <span className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300">
+              <Play className="w-6 h-6 text-blue-600 fill-blue-600" />
             </span>
           </button>
 
-          <div className="absolute bottom-6 left-6 right-6 text-white">
-            <div className="flex gap-1 mb-2">
+          <div className="absolute bottom-4 left-4 right-4 text-white">
+            <div className="flex gap-1 mb-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <p className="italic text-lg max-w-xl">“{reviews[0].quote}”</p>
-            <p className="mt-3 font-semibold">
+            <p className="text-sm italic">“{reviews[0].quote}”</p>
+            <p className="mt-2 text-sm font-semibold">
               {reviews[0].name}, {reviews[0].age}
             </p>
-            <p className="text-sm opacity-80">{reviews[0].city}</p>
+            <p className="text-xs opacity-80">{reviews[0].city}</p>
           </div>
         </div>
 
@@ -72,17 +74,17 @@ export default function CustomerReviews() {
           {reviews.slice(1).map((review, i) => (
             <div
               key={i}
-              className="relative rounded-2xl overflow-hidden shadow-lg"
+              className="relative rounded-2xl overflow-hidden shadow-md"
             >
               <video
                 src={review.video}
                 className="w-full h-52 object-cover"
-                poster="https://images.unsplash.com/photo-1551076805-e1869033e561"
+                poster={review.poster}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
               <button className="absolute inset-0 flex items-center justify-center">
-                <span className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-md">
+                <span className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300">
                   <Play className="w-6 h-6 text-blue-600 fill-blue-600" />
                 </span>
               </button>

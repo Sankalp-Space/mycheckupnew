@@ -15,7 +15,7 @@ export default function Navbar() {
   const [active, setActive] = useState("Test Packages");
 
   return (
-    <header className="w-full border-b bg-white">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-white">
       {/* Top purple strip */}
       <div className="bg-[#4B2E4B] text-white text-sm w-full">
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">

@@ -1,6 +1,6 @@
 export default function HomeHero() {
   return (
-    <section className="bg-[#D8BFD8] py-8 px-4">
+    <section className="bg-[#D8BFD8] pt-40 pb-8 px-4">
       <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
 
