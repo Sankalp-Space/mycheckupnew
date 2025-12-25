@@ -1,11 +1,12 @@
-# TODO: Make Website Dynamic with Good UI, Lazy Loading, and Responsiveness
+# TODO: Update Theme Colors for DiscountPopup and Footer
 
-## Steps to Complete
-
-- [x] Install framer-motion library for animations
-- [x] Update src/App.jsx: Implement React.lazy for component imports and wrap in Suspense with loading fallback
-- [x] Update src/components/HomeHero.jsx: Add dynamic search state, functionality, and Framer Motion animations
-- [x] Update src/components/Navbar.jsx: Add mobile hamburger menu toggle and animations
-- [x] Update src/components/HealthPackages.jsx: Add hover animations and dynamic pricing display with Framer Motion
-- [x] Add scale-up effects and transitions to all components for enhanced UI
-- [x] Test the app for performance improvements, responsiveness, and ensure no console errors
+- [x] Update DiscountPopup.jsx background to D8BFD8
+- [ ] Update DiscountPopup.jsx icon background to 4B2E4B
+- [x] Update DiscountPopup.jsx button background to 4B2E4B
+- [x] Update DiscountPopup.jsx check icon color to 4B2E4B
+- [ ] Update DiscountPopup.jsx focus ring to 4B2E4B
+- [x] Update DiscountPopup.jsx button hover to 4B2E4B
+- [ ] Update Footer.jsx brand logo background to 4B2E4B
+- [ ] Update Footer.jsx hover colors for links to 4B2E4B
+- [ ] Update Footer.jsx text colors for certifications to 4B2E4B
+- [x] Update Footer.jsx social icon hover to 4B2E4B
