@@ -117,7 +117,7 @@ export default function DiagnosticCategories() {
         </div>
 
         <div className="mt-12 text-center">
-          <button className="bg-[#4B2E4B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#3a2337] transition-colors duration-300">
+          <button className="bg-[#4B2E4B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#3a2337] hover:scale-110 transition-all duration-300">
             View All Tests
           </button>
         </div>

@@ -137,7 +137,7 @@ export default function HomeSampleCollection() {
               return (
                 <div key={i} className={`relative flex items-center ${isLeft ? "justify-start pr-20" : "justify-end pl-20"}`}>
                   {/* Card */}
-                  <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4 hover:border-[#5A2B4D] hover:shadow-none`}>
+                  <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4 hover:border-[#5A2B4D] hover:shadow-none hover:border-2`}>
                     {/* Decorative blob that appears on hover */}
                     <svg
                       className={`decor-blob pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100 ${isLeft ? "-right-44" : "-left-44"}`}
@@ -168,9 +168,9 @@ export default function HomeSampleCollection() {
                     </div>
 
                     <div className="mt-3 flex flex-col items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#D6B9CB]" />
-                      <span className="w-2 h-2 rounded-full bg-[#D6B9CB]" />
-                      <span className="w-2 h-2 rounded-full bg-[#D6B9CB]" />
+                      <span className="w-2 h-2 rounded-full bg-purple-700" />
+                      <span className="w-2 h-2 rounded-full bg-purple-600" />
+                      <span className="w-2 h-2 rounded-full bg-purple-400" />
                     </div>
                   </div>
                 </div>

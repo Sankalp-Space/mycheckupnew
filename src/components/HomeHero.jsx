@@ -73,10 +73,10 @@ export default function HomeHero() {
 
                   {/* Tabs */}
                   <div className="flex bg-gray-100 rounded-xl p-1">
-                    <button className="px-4 py-2 rounded-lg bg-[#4B2E4B] text-white text-sm">
+                    <button className="px-4 py-2 rounded-lg bg-[#4B2E4B] text-white text-sm hover:scale-105 transition-all duration-300">
                       Lab Tests
                     </button>
-                    <button className="px-4 py-2 rounded-lg text-gray-600 text-sm">
+                    <button className="px-4 py-2 rounded-lg text-gray-600 text-sm hover:scale-105 transition-all duration-300">
                       Checkups
                     </button>
                   </div>
@@ -95,7 +95,7 @@ export default function HomeHero() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-6 lg:p-10">
+          <div className="bg-[#EEE4EE] flex items-center justify-center p-6 lg:p-10">
             <img
               src="/ImageWithFallback.png"
               alt="Doctor"

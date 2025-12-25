@@ -81,7 +81,7 @@ export default function HealthPackages() {
             <p className="text-green-600 text-sm text-center mb-6">{item.off}</p>
 
             <button
-              className="w-full bg-[#4B2E4B] text-white py-3 rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-102"
+              className="w-full bg-[#4B2E4B] text-white py-3 rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105"
             >
               Book Now <ArrowRight size={16} />
             </button>
