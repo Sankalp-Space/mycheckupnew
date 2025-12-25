@@ -9,7 +9,7 @@ const packages = [
     oldPrice: "₹2,999",
     off: "50% OFF",
     popular: true,
-    icon: <Activity className="w-8 h-8 text-[#D8BFD8]" />,
+    icon: <Activity className="w-8 h-8 text-[#4B2E4B]" />,
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const packages = [
     price: "₹999",
     oldPrice: "₹2,499",
     off: "60% OFF",
-    icon: <Heart className="w-8 h-8 text-[#D8BFD8]" />,
+    icon: <Heart className="w-8 h-8 text-[#4B2E4B]" />,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const packages = [
     price: "₹599",
     oldPrice: "₹1,299",
     off: "54% OFF",
-    icon: <Droplet className="w-8 h-8 text-[#D8BFD8]" />,
+    icon: <Droplet className="w-8 h-8 text-[#4B2E4B]" />,
   },
   {
     id: 4,
@@ -36,13 +36,13 @@ const packages = [
     price: "₹2,999",
     oldPrice: "₹7,999",
     off: "63% OFF",
-    icon: <Users className="w-8 h-8 text-[#D8BFD8]" />,
+    icon: <Users className="w-8 h-8 text-[#4B2E4B]" />,
   },
 ];
 
 export default function HealthPackages() {
   return (
-    <section className="bg-[#e6cfe2] py-16">
+    <section className="bg-[#D8BFD8] py-16">
       <h2 className="text-3xl font-semibold text-center mb-2">
         Doctors Curated Health Checkup Packages
       </h2>
@@ -54,10 +54,10 @@ export default function HealthPackages() {
         {packages.map((item) => (
           <div
             key={item.id}
-            className="relative bg-white rounded-2xl p-6 border border-transparent transition-all duration-300 hover:border-2 hover:border-[#D8BFD8] hover:scale-105 hover:shadow-lg"
+            className="relative bg-white rounded-2xl p-6 border border-transparent transition-all duration-300 hover:border-2 hover:border-[#4B2E4B] hover:scale-105 hover:shadow-lg"
           >
             {item.popular && (
-              <span className="absolute -top-3 left-6 bg-[#D8BFD8] text-white text-xs px-4 py-1 rounded-full">
+              <span className="absolute -top-3 left-6 bg-[#4B2E4B] text-white text-xs px-4 py-1 rounded-full">
                 Most Popular
               </span>
             )}
@@ -81,7 +81,7 @@ export default function HealthPackages() {
             <p className="text-green-600 text-sm text-center mb-6">{item.off}</p>
 
             <button
-              className="w-full bg-[#D8BFD8] text-white py-3 rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-102"
+              className="w-full bg-[#4B2E4B] text-white py-3 rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-102"
             >
               Book Now <ArrowRight size={16} />
             </button>
