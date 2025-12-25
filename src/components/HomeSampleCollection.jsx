@@ -1,4 +1,4 @@
-import { Sparkles, MapPin, ShieldCheck, Clock, Home, CheckCircle } from "lucide-react";
+import { Sparkles, MapPin, ShieldCheck, TestTube, FileText, CheckCircle } from "lucide-react";
 
 export default function HomeSampleCollection() {
   const steps = [
@@ -19,113 +19,128 @@ export default function HomeSampleCollection() {
     {
       id: "03",
       title: "Safe Sample Collection",
-      desc: "Trained experts collect samples using sterile protocols",
+      desc: "Trained experts collect samples following strict hygiene protocols",
       icon: ShieldCheck,
       side: "left",
     },
     {
       id: "04",
-      title: "Samples Reach Accredited Lab",
-      desc: "Transported securely to NABL certified labs",
-      icon: Home,
+      title: "Sample Reaches Accredited Lab",
+      desc: "Temperature-controlled transport to our NABL certified labs",
+      icon: TestTube,
       side: "right",
     },
     {
       id: "05",
       title: "Quick Doctor-Verified Reports",
-      desc: "Receive reports digitally within 24–48 hours",
-      icon: Clock,
+      desc: "Receive digital reports within 24-48 hours on your dashboard",
+      icon: FileText,
       side: "left",
     },
   ];
 
   return (
-    <section className="bg-[#D8BFD8] py-20 px-4">
+    <section className="home-sample-section py-24 px-4 relative overflow-hidden">
+      {/* decorative radial spots to match Figma */}
+      <div className="absolute -left-40 -top-20 w-96 h-96 rounded-full bg-gradient-to-br from-[#e9d7e7] to-transparent opacity-40 pointer-events-none blur-3xl"></div>
+      <div className="absolute right-24 top-48 w-[460px] h-[460px] rounded-full bg-gradient-to-br from-[#edd6e6] to-transparent opacity-30 pointer-events-none blur-3xl"></div>
+
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-semibold text-gray-800">
-          How Does Home Sample Collection Work?
-        </h2>
-        <p className="text-gray-600 mt-2">
-          Your health journey in 5 simple steps
-        </p>
+        <div className="inline-flex items-center gap-4 mb-6">
+          <span className="px-4 py-1 rounded-full bg-white/20 text-sm text-white tracking-wider border border-white/10">OUR PROCESS</span>
+        </div>
+        <h2 className="text-4xl md:text-5xl font-semibold text-theme-dark mb-2">How Does Home Sample Collection Work?</h2>
+        <p className="text-theme-text text-lg">Your health journey in 5 simple steps</p>
       </div>
 
-      <div className="relative max-w-5xl mx-auto mt-20">
-        {/* Vertical Line */}
-        <div className="absolute left-1/2 top-0 h-full w-[2px] bg-[#4B2E4B]/30 -translate-x-1/2" />
+      <div className="relative max-w-6xl mx-auto mt-20">
+        {/* Timeline vertical line */}
+        <div className="absolute left-1/2 top-0 h-full -translate-x-1/2 flex flex-col items-center">
+          <div className="w-1 bg-[#cdaec0] h-full rounded" />
+        </div>
 
-        <div className="space-y-20">
+        <div className="space-y-28">
           {steps.map((step, i) => {
             const Icon = step.icon;
+            const isLeft = step.side === "left";
             return (
-              <div
-                key={i}
-                className={`relative flex items-center ${
-                  step.side === "left"
-                    ? "justify-start pr-10"
-                    : "justify-end pl-10"
-                }`}
-              >
+              <div key={i} className={`relative flex items-center ${isLeft ? "justify-start pr-20" : "justify-end pl-20"}`}>
                 {/* Card */}
-                <div
-                  className="group relative bg-white w-[420px] rounded-2xl p-8 shadow-lg border border-transparent
-                  transition-all duration-300 hover:-translate-y-2 hover:border-[#4B2E4B]"
-                >
-                  <span
-                    className="absolute -top-4 right-6 bg-[#4B2E4B] text-white px-4 py-2 rounded-xl text-sm
-                    transition-transform duration-300 group-hover:scale-110"
+                <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4`}> 
+                  {/* Decorative blob that appears on hover */}
+                  <svg
+                    className={`decor-blob pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100 ${isLeft ? "-right-44" : "-left-44"}`}
+                    viewBox="0 0 120 120"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden
                   >
-                    {step.id}
-                  </span>
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 mt-2">{step.desc}</p>
+                    <defs>
+                      <radialGradient id={`rb${i}`} cx="50%" cy="50%">
+                        <stop offset="0" stopColor="#FFF5FB" stopOpacity="0.9" />
+                        <stop offset="1" stopColor="#EDD6E6" stopOpacity="0.9" />
+                      </radialGradient>
+                    </defs>
+                    <ellipse cx="60" cy="60" rx="55" ry="35" fill={`url(#rb${i})`} />
+                  </svg>
+
+                  <span className={`step-badge absolute -top-4 ${isLeft ? 'right-6' : 'left-6'}`}>{step.id}</span>
+
+                  <h3 className="text-2xl font-semibold text-[#4b2e4b]">{step.title}</h3>
+                  <p className="text-[#6b5a64] mt-4 leading-relaxed">{step.desc}</p>
                 </div>
 
-                {/* Center Icon */}
-                <div className="absolute left-1/2 -translate-x-1/2">
-                  <div className="w-14 h-14 rounded-full bg-white border-4 border-theme-primary flex items-center justify-center shadow-md">
-                    <Icon className="text-theme-primary" size={24} />
+                {/* Center icon marker */}
+                <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
+                  <div className="timeline-icon w-20 h-20 rounded-full bg-white border-4 border-[#5A2B4D] flex items-center justify-center shadow-[0_12px_28px_rgba(90,43,77,0.18)]">
+                    <Icon className="text-[#5A2B4D]" size={24} />
+                  </div>
+
+                  <div className="mt-3 flex flex-col items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#D6B9CB]" />
+                    <span className="w-2 h-2 rounded-full bg-[#D6B9CB]" />
+                    <span className="w-2 h-2 rounded-full bg-[#D6B9CB]" />
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
- 
-        {/* CTA */}
-        <div className="text-center mt-24">
-          <p className="text-gray-700 mb-4">
-            Ready to experience hassle-free diagnostics at home?
-          </p>
-          <button
-            className="group inline-flex items-center gap-2 bg-[#4B2E4B] text-white px-6 py-3 rounded-xl
-            transition-all duration-300 hover:scale-105"
-          >
-            Schedule Home Collection
-            <Sparkles className="transition-transform duration-300 group-hover:rotate-12" />
-          </button>
+
+        {/* CTA card centered */}
+        <div className="flex justify-center mt-20">
+          <div className="cta-card bg-white rounded-2xl shadow-[0_18px_40px_rgba(80,40,70,0.08)] p-8 w-[720px]">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <p className="text-[#4b3943] text-lg">Ready to experience hassle-free diagnostics at home?</p>
+              <button className="bg-[#5A2B4D] text-white px-8 py-3 rounded-full shadow-[0_10px_30px_rgba(90,43,77,0.28)] inline-flex items-center gap-3">Schedule Your Home Collection <Sparkles /></button>
+            </div>
+          </div>
         </div>
+
       </div>
 
       {/* Trusted Section */}
-      <div className="bg-[#4B2E4B] mt-24 py-16">
-        <h3 className="text-white text-2xl text-center mb-10">
-          Trusted by Millions Across India
-        </h3>
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 px-4">
-          {["5M+ Users", "50k+ Reviews", "500+ Tests", "1200+ Cities", "25+ Labs"].map(
-            (item, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-xl p-6 text-center shadow-md transition-all duration-300 hover:-translate-y-2"
-              >
-                <CheckCircle className="mx-auto text-[#4B2E4B] mb-2" />
-                <p className="font-semibold text-gray-800">{item}</p>
+      <div className="mt-24 py-16 trusted-section">
+        <h3 className="text-white text-4xl text-center font-semibold mb-4">Trusted by Millions Across India</h3>
+        <p className="text-white/80 text-center mb-8">Your health, backed by numbers that matter</p>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 px-4">
+          {[
+            { num: '5M+', label: 'Customers Served' },
+            { num: '50K+', label: 'Tests Processed Everyday' },
+            { num: '500+', label: 'Cities Covered' },
+            { num: '1200+', label: 'Collection Centres' },
+            { num: '2000+', label: 'Home Collection Experts' },
+            { num: '25+', label: 'In-House Labs' },
+          ].map((item, i) => (
+            <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2">
+              <div className="mx-auto w-14 h-14 rounded-xl bg-[#f3e9ef] flex items-center justify-center mb-4 shadow-sm">
+                <CheckCircle className="text-[#5A2B4D]" />
               </div>
-            )
-          )}
+              <p className="text-2xl font-semibold text-gray-800">{item.num}</p>
+              <p className="text-gray-500 mt-2">{item.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
