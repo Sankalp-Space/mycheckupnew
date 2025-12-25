@@ -1,182 +1,133 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import {
-  MousePointerClick,
-  MapPin,
-  Syringe,
-  FileCheck,
-  ClipboardList,
-  Users,
-  TestTube,
-  MapPinned,
-  Building2,
-  UserCheck,
-  FlaskConical,
-} from "lucide-react";
-
-const parseStatValue = (value) => {
-  const num = parseFloat(value.replace(/[^\d.]/g, ''));
-  const suffix = value.replace(/[\d.]/g, '');
-  let multiplier = 1;
-  if (suffix.includes('M')) multiplier = 1000000;
-  else if (suffix.includes('K')) multiplier = 1000;
-  return Math.floor(num * multiplier);
-};
+import { Sparkles, MapPin, ShieldCheck, Clock, Home, CheckCircle } from "lucide-react";
 
 export default function HomeSampleCollection() {
-  const [counts, setCounts] = useState([0, 0, 0, 0, 0, 0]);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const statsRef = useRef(null);
-
-  const stats = [
-    { value: "5M+", label: "Customers Served", icon: Users },
-    { value: "50K+", label: "Tests Processed Everyday", icon: TestTube },
-    { value: "500+", label: "Cities Covered", icon: MapPinned },
-    { value: "1200+", label: "Collection Centres", icon: Building2 },
-    { value: "2000+", label: "Home Collection Experts", icon: UserCheck },
-    { value: "25+", label: "In-House Labs", icon: FlaskConical },
+  const steps = [
+    {
+      id: "01",
+      title: "Easy Online Booking",
+      desc: "Book your test online or via phone in under 2 minutes",
+      icon: Sparkles,
+      side: "left",
+    },
+    {
+      id: "02",
+      title: "Live Tracking of Phlebotomist",
+      desc: "Real-time updates on our professional arriving at your home",
+      icon: MapPin,
+      side: "right",
+    },
+    {
+      id: "03",
+      title: "Safe Sample Collection",
+      desc: "Trained experts collect samples using sterile protocols",
+      icon: ShieldCheck,
+      side: "left",
+    },
+    {
+      id: "04",
+      title: "Samples Reach Accredited Lab",
+      desc: "Transported securely to NABL certified labs",
+      icon: Home,
+      side: "right",
+    },
+    {
+      id: "05",
+      title: "Quick Doctor-Verified Reports",
+      desc: "Receive reports digitally within 24–48 hours",
+      icon: Clock,
+      side: "left",
+    },
   ];
 
-  const targetCounts = stats.map(stat => parseStatValue(stat.value));
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          targetCounts.forEach((target, index) => {
-            let current = 0;
-            const increment = target / 60; // 60 frames for 1 second
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                current = target;
-                clearInterval(timer);
-              }
-              setCounts(prev => {
-                const newCounts = [...prev];
-                newCounts[index] = Math.floor(current);
-                return newCounts;
-              });
-            }, 1000 / 60);
-          });
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
-      }
-    };
-  }, [hasAnimated, targetCounts]);
-
-  const formatCount = (count, originalValue) => {
-    const suffix = originalValue.replace(/[\d.]/g, '');
-    if (suffix.includes('M')) return `${(count / 1000000).toFixed(1)}M+`;
-    if (suffix.includes('K')) return `${(count / 1000).toFixed(0)}K+`;
-    return `${count}+`;
-  };
   return (
-    <div className="w-full font-sans">
-      {/* Top Section */}
-      <section className="bg-[#F4FAFF] py-16 px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0B2B4C]">
+    <section className="bg-[#D8BFD8] py-20 px-4">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl font-semibold text-gray-800">
           How Does Home Sample Collection Work?
         </h2>
-        <p className="text-center text-gray-500 mt-3">
-          Simple, safe, and hassle-free process from booking to reports
+        <p className="text-gray-600 mt-2">
+          Your health journey in 5 simple steps
         </p>
+      </div>
 
-        <div className="mt-14 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto relative">
-          {/* Connecting Line */}
-          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-blue-600" />
-          {[
-            {
-              step: "Step 1",
-              title: "Easy Online Booking",
-              desc: "Book your test online or via phone in under 2 minutes",
-              icon: MousePointerClick,
-            },
-            {
-              step: "Step 2",
-              title: "Live Tracking of Phlebotomist",
-              desc: "Real-time updates on our professional arriving at your home",
-              icon: MapPin,
-            },
-            {
-              step: "Step 3",
-              title: "Safe Sample Collection",
-              desc: "Trained experts collect samples following strict hygiene protocols",
-              icon: Syringe,
-            },
-            {
-              step: "Step 4",
-              title: "Sample Reaches Accredited Lab",
-              desc: "Temperature-controlled transport to our NABL certified labs",
-              icon: FileCheck,
-            },
-            {
-              step: "Step 5",
-              title: "Quick Doctor-Verified Reports",
-              desc: "Receive digital reports within 24-48 hours on your dashboard",
-              icon: ClipboardList,
-            },
-          ].map((item, i) => {
-            const Icon = item.icon;
+      <div className="relative max-w-5xl mx-auto mt-20">
+        {/* Vertical Line */}
+        <div className="absolute left-1/2 top-0 h-full w-[2px] bg-[#4B2E4B]/30 -translate-x-1/2" />
+
+        <div className="space-y-20">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
             return (
               <div
                 key={i}
-                className="flex flex-col items-center text-center md:w-1/5 relative z-10"
+                className={`relative flex items-center ${
+                  step.side === "left"
+                    ? "justify-start pr-10"
+                    : "justify-end pl-10"
+                }`}
               >
-                <div className="w-24 h-24 rounded-full border-4 border-blue-600 flex items-center justify-center bg-white">
-                  <Icon className="w-10 h-10 text-blue-600" />
+                {/* Card */}
+                <div
+                  className="group relative bg-white w-[420px] rounded-2xl p-8 shadow-lg border border-transparent
+                  transition-all duration-300 hover:-translate-y-2 hover:border-[#4B2E4B]"
+                >
+                  <span
+                    className="absolute -top-4 right-6 bg-[#4B2E4B] text-white px-4 py-2 rounded-xl text-sm
+                    transition-transform duration-300 group-hover:scale-110"
+                  >
+                    {step.id}
+                  </span>
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 mt-2">{step.desc}</p>
                 </div>
-                <span className="mt-3 text-sm text-blue-600 font-semibold">{item.step}</span>
-                <h4 className="mt-2 font-semibold text-[#0B2B4C]">{item.title}</h4>
-                <p className="text-sm text-gray-500 mt-1 px-2">{item.desc}</p>
+
+                {/* Center Icon */}
+                <div className="absolute left-1/2 -translate-x-1/2">
+                  <div className="w-14 h-14 rounded-full bg-white border-4 border-theme-primary flex items-center justify-center shadow-md">
+                    <Icon className="text-theme-primary" size={24} />
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-gradient-to-r from-[#0A5AA6] to-[#0D74C9] py-20 px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white">
-          Trusted by Millions Across India
-        </h2>
-        <p className="text-center text-blue-100 mt-3">
-          Your health, backed by numbers that matter
-        </p>
-
-        <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 mt-14 max-w-7xl mx-auto">
-          {stats.map((stat, i) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={i}
-                className="bg-white rounded-2xl shadow-lg py-10 px-4 text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-              >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-blue-50 flex items-center justify-center">
-                  <Icon className="w-7 h-7 text-blue-600" />
-                </div>
-                <h3 className="text-3xl font-bold text-[#0B2B4C]">{formatCount(counts[i], stat.value)}</h3>
-                <p className="text-gray-500 mt-2 text-sm">{stat.label}</p>
-              </motion.div>
-            );
-          })}
+ 
+        {/* CTA */}
+        <div className="text-center mt-24">
+          <p className="text-gray-700 mb-4">
+            Ready to experience hassle-free diagnostics at home?
+          </p>
+          <button
+            className="group inline-flex items-center gap-2 bg-[#4B2E4B] text-white px-6 py-3 rounded-xl
+            transition-all duration-300 hover:scale-105"
+          >
+            Schedule Home Collection
+            <Sparkles className="transition-transform duration-300 group-hover:rotate-12" />
+          </button>
         </div>
-      </section>
-    </div>
+      </div>
+
+      {/* Trusted Section */}
+      <div className="bg-[#4B2E4B] mt-24 py-16">
+        <h3 className="text-white text-2xl text-center mb-10">
+          Trusted by Millions Across India
+        </h3>
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 px-4">
+          {["5M+ Users", "50k+ Reviews", "500+ Tests", "1200+ Cities", "25+ Labs"].map(
+            (item, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl p-6 text-center shadow-md transition-all duration-300 hover:-translate-y-2"
+              >
+                <CheckCircle className="mx-auto text-[#4B2E4B] mb-2" />
+                <p className="font-semibold text-gray-800">{item}</p>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
