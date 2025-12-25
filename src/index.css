@@ -37,10 +37,6 @@
 .timeline-icon {
   transition: transform .25s ease, box-shadow .25s ease;
 }
-.timeline-icon:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 18px 32px rgba(90,43,77,0.25);
-}
 
 .cta-card {
   border: 1px solid rgba(75,46,75,0.04);

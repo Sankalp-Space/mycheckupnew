@@ -1,4 +1,4 @@
-import { Sparkles, MapPin, ShieldCheck, TestTube, FileText, CheckCircle } from "lucide-react";
+import { Sparkles, MapPin, ShieldCheck, TestTube, FileText, CheckCircle, Building2  , FileCheck   } from "lucide-react";
 
 export default function HomeSampleCollection() {
   const steps = [
@@ -20,21 +20,21 @@ export default function HomeSampleCollection() {
       id: "03",
       title: "Safe Sample Collection",
       desc: "Trained experts collect samples following strict hygiene protocols",
-      icon: ShieldCheck,
+      icon: TestTube,
       side: "left",
     },
     {
       id: "04",
       title: "Sample Reaches Accredited Lab",
       desc: "Temperature-controlled transport to our NABL certified labs",
-      icon: TestTube,
+      icon: Building2,
       side: "right",
     },
     {
       id: "05",
       title: "Quick Doctor-Verified Reports",
       desc: "Receive digital reports within 24-48 hours on your dashboard",
-      icon: FileText,
+      icon: FileCheck,
       side: "left",
     },
   ];
@@ -63,10 +63,11 @@ export default function HomeSampleCollection() {
           {steps.map((step, i) => {
             const Icon = step.icon;
             const isLeft = step.side === "left";
+            const color = i % 2 === 0 ? '#5A2B4D' : '#D8BFD8';
             return (
               <div key={i} className={`relative flex items-center ${isLeft ? "justify-start pr-20" : "justify-end pl-20"}`}>
                 {/* Card */}
-                <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4`}> 
+                <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4 hover:border-[#5A2B4D]`}>
                   {/* Decorative blob that appears on hover */}
                   <svg
                     className={`decor-blob pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100 ${isLeft ? "-right-44" : "-left-44"}`}
@@ -84,7 +85,7 @@ export default function HomeSampleCollection() {
                     <ellipse cx="60" cy="60" rx="55" ry="35" fill={`url(#rb${i})`} />
                   </svg>
 
-                  <span className={`step-badge absolute -top-4 ${isLeft ? 'right-6' : 'left-6'}`}>{step.id}</span>
+                  <span className={`step-badge absolute -top-4 ${isLeft ? 'right-6' : 'left-6'}`} style={{ backgroundColor: color }}>{step.id}</span>
 
                   <h3 className="text-2xl font-semibold text-[#4b2e4b]">{step.title}</h3>
                   <p className="text-[#6b5a64] mt-4 leading-relaxed">{step.desc}</p>
@@ -92,8 +93,8 @@ export default function HomeSampleCollection() {
 
                 {/* Center icon marker */}
                 <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
-                  <div className="timeline-icon w-20 h-20 rounded-full bg-white border-4 border-[#5A2B4D] flex items-center justify-center shadow-[0_12px_28px_rgba(90,43,77,0.18)]">
-                    <Icon className="text-[#5A2B4D]" size={24} />
+                  <div className="timeline-icon w-20 h-20 rounded-full bg-white border-4 flex items-center justify-center" style={{ borderColor: color }}>
+                    <Icon className="text-[#5A2B4D]" size={36} />
                   </div>
 
                   <div className="mt-3 flex flex-col items-center gap-2">
@@ -108,16 +109,17 @@ export default function HomeSampleCollection() {
         </div>
 
         {/* CTA card centered */}
-        <div className="flex justify-center mt-20">
-          <div className="cta-card bg-white rounded-2xl shadow-[0_18px_40px_rgba(80,40,70,0.08)] p-8 w-[720px]">
+       
+
+      </div>
+       <div className="flex justify-center mt-20">
+          <div className="cta-card bg-white rounded-2xl shadow-[0_18px_40px_rgba(80,40,70,0.08)] p-10 w-full max-w-5xl border border-[#5A2B4D]/10">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <p className="text-[#4b3943] text-lg">Ready to experience hassle-free diagnostics at home?</p>
-              <button className="bg-[#5A2B4D] text-white px-8 py-3 rounded-full shadow-[0_10px_30px_rgba(90,43,77,0.28)] inline-flex items-center gap-3">Schedule Your Home Collection <Sparkles /></button>
+              <p className="text-theme-dark text-xl font-medium">Ready to experience hassle-free diagnostics at home?</p>
+              <button className="bg-theme-primary text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(90,43,77,0.28)] inline-flex items-center gap-3 hover:scale-105 transition-all duration-300">Schedule Your Home Collection <Sparkles /></button>
             </div>
           </div>
         </div>
-
-      </div>
 
       {/* Trusted Section */}
       <div className="mt-24 py-16 trusted-section">
