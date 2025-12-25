@@ -51,14 +51,14 @@ export default function Footer() {
 
         {/* Tests */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Tests</h4>
+          <h4 className="text-white font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-3 text-sm">
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Blood Tests</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Health Packages</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Women Health</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Men Health</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Senior Citizen</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>COVID-19 Tests</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Home</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Tests</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Packages</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Health Blog</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>About Us</motion.li>
+            {/* <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>COVID-19 Tests</motion.li> */}
           </ul>
         </div>
 
@@ -66,39 +66,38 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Company</h4>
           <ul className="space-y-3 text-sm">
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>About Us</motion.li>
+            {/* <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>About Us</motion.li> */}
             <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Quality Assurance</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Certifications</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Media Coverage</motion.li>
             <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Partnerships</motion.li>
             <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Careers</motion.li>
-          </ul>
-        </div>
-
-        {/* Help */}
-        <div>
-          <h4 className="text-white font-semibold mb-4">Help Center</h4>
-          <ul className="space-y-3 text-sm">
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>FAQs</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Press & Media</motion.li>
             <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Contact Us</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Book a Test</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Track Order</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Download Reports</motion.li>
           </ul>
         </div>
-
         {/* Cities */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Top Cities</h4>
+          <h4 className="text-white font-semibold mb-4">Services</h4>
           <ul className="space-y-3 text-sm">
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Delhi NCR</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Mumbai</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Bangalore</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Chennai</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Hyderabad</motion.li>
-            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }} className="text-blue-400">View All Cities</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Home Sample Collection</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Health Checkups</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Doctor Consultation</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Lab Tests</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Radiology</motion.li>
+            {/* <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }} className="text-blue-400">View All Cities</motion.li> */}
           </ul>
         </div>
+     {/* Help */}
+        <div>
+          <h4 className="text-white font-semibold mb-4">Support</h4>
+          <ul className="space-y-3 text-sm">
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>FAQs</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Help Center</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Privacy Policy</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Terms & Conditions</motion.li>
+            <motion.li whileHover={{ x: 5, color: "#60a5fa" }} transition={{ duration: 0.2 }}>Refund Policy</motion.li>
+          </ul>
+        </div>
+
       </div>
 
       {/* Divider */}

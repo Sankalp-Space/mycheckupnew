@@ -1,6 +1,64 @@
-import { Sparkles, MapPin, ShieldCheck, TestTube, FileText, CheckCircle, Building2  , FileCheck   } from "lucide-react";
+import { Sparkles, MapPin, ShieldCheck, TestTube, FileText, CheckCircle, Building2  , FileCheck, Users, Activity, Building, User, FlaskConical,UserRoundCheck     } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 export default function HomeSampleCollection() {
+  const [counters, setCounters] = useState([0, 0, 0, 0, 0, 0]);
+  const trustedSectionRef = useRef(null);
+
+  const stats = [
+    { num: 5000000, display: '5M+', label: 'Customers Served', icon: Users },
+    { num: 50000, display: '50K+', label: 'Tests Processed Everyday', icon: TestTube },
+    { num: 500, display: '500+', label: 'Cities Covered', icon: MapPin },
+    { num: 1200, display: '1200+', label: 'Collection Centres', icon: Building2 },
+    { num: 2000, display: '2000+', label: 'Home Collection Experts', icon: UserRoundCheck  },
+    { num: 25, display: '25+', label: 'In-House Labs', icon: FlaskConical  },
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounters();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (trustedSectionRef.current) {
+      observer.observe(trustedSectionRef.current);
+    }
+
+    return () => {
+      if (trustedSectionRef.current) {
+        observer.unobserve(trustedSectionRef.current);
+      }
+    };
+  }, []);
+
+  const animateCounters = () => {
+    stats.forEach((stat, index) => {
+      const target = stat.num;
+      const duration = 2000; // 2 seconds
+      const increment = target / (duration / 16); // 60fps
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        setCounters((prev) => {
+          const newCounters = [...prev];
+          newCounters[index] = Math.floor(current);
+          return newCounters;
+        });
+      }, 16);
+    });
+  };
+
   const steps = [
     {
       id: "01",
@@ -135,27 +193,28 @@ export default function HomeSampleCollection() {
       </section>
 
       {/* Trusted Section */}
-      <section className="py-16 w-full trusted-section bg-[#5A2B4D]">
+      <section ref={trustedSectionRef} className="py-16 w-full trusted-section bg-[#5A2B4D]">
         <h3 className="text-white text-4xl text-center font-semibold mb-4">Trusted by Millions Across India</h3>
         <p className="text-white/80 text-center mb-8">Your health, backed by numbers that matter</p>
 
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 px-4">
-          {[
-            { num: '5M+', label: 'Customers Served' },
-            { num: '50K+', label: 'Tests Processed Everyday' },
-            { num: '500+', label: 'Cities Covered' },
-            { num: '1200+', label: 'Collection Centres' },
-            { num: '2000+', label: 'Home Collection Experts' },
-            { num: '25+', label: 'In-House Labs' },
-          ].map((item, i) => (
-            <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2">
-              <div className="mx-auto w-14 h-14 rounded-xl bg-[#f3e9ef] flex items-center justify-center mb-4 shadow-sm">
-                <CheckCircle className="text-[#5A2B4D]" />
+          {stats.map((item, i) => {
+            const Icon = item.icon;
+            const formatNumber = (num) => {
+              if (num >= 1000000) return `${(num / 1000000).toFixed(0)}M+`;
+              if (num >= 1000) return `${(num / 1000).toFixed(0)}K+`;
+              return `${num}+`;
+            };
+            return (
+              <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-2">
+                <div className="mx-auto w-14 h-14 rounded-xl bg-[#f3e9ef] flex items-center justify-center mb-4 shadow-sm">
+                  <Icon className="text-[#5A2B4D]" size={24} />
+                </div>
+                <p className="text-2xl font-semibold text-gray-800">{formatNumber(counters[i])}</p>
+                <p className="text-gray-500 mt-2">{item.label}</p>
               </div>
-              <p className="text-2xl font-semibold text-gray-800">{item.num}</p>
-              <p className="text-gray-500 mt-2">{item.label}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </>
