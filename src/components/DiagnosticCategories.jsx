@@ -1,71 +1,125 @@
 import {
+  HeartPulse,
   Activity,
-  Heart,
-  Pill,
-  Thermometer,
   Droplet,
-  Zap,
-  Users,
-  AlertCircle,
-  Baby,
-  Flower,
-  Wind,
-  Shield,
-  Bone,
-  CircleDot,
+  FlaskConical,
+  Pill,
   Stethoscope,
+  Microscope,
+  Baby,
+  Syringe,
+  Dna
 } from "lucide-react";
 
 const categories = [
-  { name: "Full Body", icon: Activity },
-  { name: "Heart", icon: Heart },
-  { name: "Vitamin", icon: Pill },
-  { name: "Fever", icon: Thermometer },
-  { name: "Diabetes", icon: Droplet },
-  { name: "Thyroid", icon: Zap },
-  { name: "Hormones", icon: Users },
-  { name: "Cancer", icon: AlertCircle },
-  { name: "Pregnancy", icon: Baby },
-  { name: "Fertility", icon: Flower },
-  { name: "Allergy", icon: Wind },
-  { name: "STD", icon: Shield },
-  { name: "Arthritis", icon: Bone },
-  { name: "Anemia", icon: CircleDot },
-  { name: "Antenatal", icon: Stethoscope },
+  {
+    title: "Heart Health",
+    subtitle: "ECG & Cardiac Tests",
+    icon: HeartPulse,
+  },
+  {
+    title: "Thyroid",
+    subtitle: "Thyroid Function Tests",
+    icon: Activity,
+  },
+  {
+    title: "Diabetes",
+    subtitle: "Blood Sugar Tests",
+    icon: Droplet,
+  },
+  {
+    title: "Liver",
+    subtitle: "Liver Function Tests",
+    icon: FlaskConical,
+  },
+  {
+    title: "Vitamins",
+    subtitle: "Vitamin Deficiency",
+    icon: Pill,
+  },
+  {
+    title: "Kidney",
+    subtitle: "Renal Function Tests",
+    icon: Stethoscope,
+  },
+  {
+    title: "Fertility",
+    subtitle: "Fertility Assessment",
+    icon: Dna,
+  },
+  {
+    title: "Cancer",
+    subtitle: "Cancer Screening",
+    icon: Microscope,
+  },
+  {
+    title: "Pregnancy",
+    subtitle: "Prenatal Tests",
+    icon: Baby,
+  },
+  {
+    title: "Immunity",
+    subtitle: "Immune System Tests",
+    icon: Syringe,
+  },
 ];
 
 export default function DiagnosticCategories() {
   return (
-    <section className="bg-[#EEF7FF] py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Explore 2500+ Diagnostic Tests & Checkup Packages
-          </h2>
-          <p className="text-gray-600 mt-2">
-            Find the right test for your health needs
-          </p>
-        </div>
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-3xl font-semibold text-gray-800">
+          Explore 2500+ Diagnostic Tests & Checkup Packages
+        </h2>
+        <p className="mt-2 text-gray-500">
+          Choose from a wide range of NABL certified tests
+        </p>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {categories.map((item, index) => {
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {categories.map((item, idx) => {
             const Icon = item.icon;
+
             return (
               <div
-                key={index}
-                className="bg-white rounded-2xl h-[170px] flex flex-col items-center justify-center shadow-sm hover:shadow-lg hover:scale-105 hover:bg-gray-50 transition-all duration-300"
+                key={idx}
+                className={`group cursor-pointer rounded-2xl border
+                border-gray-200 bg-white p-8 text-center
+                transition-all duration-300
+                hover:scale-[1.04]
+                hover:border-[#4B2E4B]
+                hover:bg-[#D8BFD8]/30`}
               >
-                <div className="w-14 h-14 rounded-full bg-[#E9F4FF] flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-blue-600" />
-                </div>
-                <p className="font-semibold text-gray-900">
-                  {item.name}
+                <Icon
+                  fill="none"
+                  className="mx-auto mb-4 h-8 w-8 text-gray-700
+                  transition-colors duration-300
+                  group-hover:text-[#4B2E4B] group-hover:fill-[#4B2E4B]"
+                />
+
+                <h3 className="font-semibold text-gray-800">
+                  {item.title}
+                </h3>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  {item.subtitle}
                 </p>
+
+                <span
+                  className="mt-4 inline-block text-sm font-medium text-[#4B2E4B]
+                  opacity-0 transition-opacity duration-300
+                  group-hover:opacity-100"
+                >
+                  View Tests →
+                </span>
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-12 text-center">
+          <button className="bg-[#4B2E4B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#3a2337] transition-colors duration-300">
+            View All Tests
+          </button>
         </div>
       </div>
     </section>
