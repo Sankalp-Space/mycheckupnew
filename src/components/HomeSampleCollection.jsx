@@ -67,7 +67,7 @@ export default function HomeSampleCollection() {
             return (
               <div key={i} className={`relative flex items-center ${isLeft ? "justify-start pr-20" : "justify-end pl-20"}`}>
                 {/* Card */}
-                <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4 hover:border-[#5A2B4D]`}>
+                <div className={`group step-card relative bg-white w-[520px] rounded-2xl p-8 shadow-[0_24px_40px_rgba(90,43,77,0.12)] border border-transparent transition-all duration-350 hover:-translate-y-4 hover:border-[#5A2B4D] hover:shadow-none`}>
                   {/* Decorative blob that appears on hover */}
                   <svg
                     className={`decor-blob pointer-events-none absolute top-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100 ${isLeft ? "-right-44" : "-left-44"}`}
@@ -76,13 +76,13 @@ export default function HomeSampleCollection() {
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden
                   >
-                    <defs>
+                    {/* <defs>
                       <radialGradient id={`rb${i}`} cx="50%" cy="50%">
                         <stop offset="0" stopColor="#FFF5FB" stopOpacity="0.9" />
                         <stop offset="1" stopColor="#EDD6E6" stopOpacity="0.9" />
                       </radialGradient>
                     </defs>
-                    <ellipse cx="60" cy="60" rx="55" ry="35" fill={`url(#rb${i})`} />
+                    <ellipse cx="60" cy="60" rx="55" ry="35" fill={`url(#rb${i})`} /> */}
                   </svg>
 
                   <span className={`step-badge absolute -top-4 ${isLeft ? 'right-6' : 'left-6'}`} style={{ backgroundColor: color }}>{step.id}</span>

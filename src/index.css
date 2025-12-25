@@ -4,7 +4,7 @@
 
 /* Home Sample Collection custom styles */
 .home-sample-section {
-  background: linear-gradient(180deg, #ecd6e6 0%, rgba(217,191,214,0.6) 30%, #ecd6e6 100%);
+  background: #D8BFD8;
 }
 
 /* subtle blur for decorative spots added with utility classes in JSX */
@@ -35,7 +35,6 @@
 }
 
 .timeline-icon {
-  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .cta-card {
