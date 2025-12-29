@@ -34,17 +34,17 @@ export default function Footer() {
           </p>
 
           <div className="space-y-2 text-sm">
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <Phone className="w-4 h-4" />
               <span>1800-123-4567</span>
-            </div>
+            </div> */}
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>support@mycheckup.com</span>
+              <span>info@mycheckup.co.in</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              <span>Mumbai, Maharashtra, India</span>
+              <span>Gurugram, Haryana, India</span>
             </div>
           </div>
         </div>
@@ -117,14 +117,14 @@ export default function Footer() {
         </div>
 
         <div className="text-sm text-right">
-          <p className="text-[#4B2E4B] font-semibold">NABL Certified</p>
-          <p className="text-white ">ISO 9001:2015</p>
+          <p className="text-[#4B2E4B] font-semibold">Performed by NABL Certified Lab</p>
+          {/* <p className="text-white ">ISO 9001:2015</p> */}
         </div>
 
-        <div className="text-sm text-right">
+        {/* <div className="text-sm text-right">
           <p className="text-[#4B2E4B] font-semibold">ISO Certified</p>
           <p className="text-white">Quality Assured</p>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom */}

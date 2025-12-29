@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Phone } from "lucide-react";
+import { Phone, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import NavItem from "./NavItem";
 
 const navLinks = [
@@ -11,8 +12,19 @@ const navLinks = [
   "More",
 ];
 
+const moreLinks = [
+  "Locations",
+  "Health Blog",
+  "Quality Assurance",
+  "Partnerships",
+  "Media Coverage",
+  "Press & Media",
+  "Careers",
+];
+
 export default function Navbar() {
-  const [active, setActive] = useState("Test Packages");
+  // const [active, setActive] = useState("Test Packages");
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-white">
@@ -40,14 +52,42 @@ export default function Navbar() {
 
         {/* Nav links */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.slice(0, -1).map((link) => (
             <NavItem
               key={link}
               label={link}
-              active={active === link}
-              onClick={() => setActive(link)}
             />
           ))}
+          {/* More dropdown */}
+          <li className="relative">
+            <button
+              onClick={() => setIsMoreOpen(!isMoreOpen)}
+              className="flex items-center gap-1 text-gray-700 transition group"
+            >
+              <motion.span
+                whileHover={{ x: 3, color: "#4B2E4B" }}
+                transition={{ duration: 0.2 }}
+              >
+                More
+              </motion.span>
+              <ChevronDown size={16} className={`transition-transform ${isMoreOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {isMoreOpen && (
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-lg z-50">
+                {moreLinks.map((item) => (
+                  <motion.a
+                    key={item}
+                    href="#"
+                    whileHover={{ x: 3, color: "#4B2E4B" }}
+                    transition={{ duration: 0.2 }}
+                    className="block px-4 py-3 text-gray-700 transition"
+                  >
+                    {item}
+                  </motion.a>
+                ))}
+              </div>
+            )}
+          </li>
         </ul>
 
         {/* Buttons */}

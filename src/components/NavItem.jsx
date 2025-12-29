@@ -1,7 +1,6 @@
-function NavItem({ label, active, onClick }) {
+function NavItem({ label }) {
   return (
     <li
-      onClick={onClick}
       className="relative cursor-pointer text-gray-700 hover:text-[#4B2E4B] transition group"
     >
       <span className="pb-2 inline-block">{label}</span>
@@ -13,7 +12,7 @@ function NavItem({ label, active, onClick }) {
           bg-gradient-to-r from-[#4B2E4B] to-transparent
           transform origin-left
           transition-all duration-500
-          ${active ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"}
+          scale-x-0 opacity-0
           group-hover:scale-x-100 group-hover:opacity-100
         `}
       />
