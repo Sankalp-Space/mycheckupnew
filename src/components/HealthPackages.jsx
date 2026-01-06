@@ -42,19 +42,19 @@ const packages = [
 
 export default function HealthPackages() {
   return (
-    <section className="bg-[#D8BFD8] py-16">
-      <h2 className="text-3xl font-semibold text-center mb-2">
+    <section className="bg-[#D8BFD8] py-12 md:py-16">
+      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-2 px-4">
         Doctors Curated Health Checkup Packages
       </h2>
-      <p className="text-center text-gray-700 mb-10">
+      <p className="text-center text-gray-700 mb-8 md:mb-10 px-4 text-sm md:text-base">
         Comprehensive health packages designed by medical experts for complete peace of mind
       </p>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 px-4 md:px-6">
         {packages.map((item) => (
           <div
             key={item.id}
-            className="relative bg-white rounded-2xl p-6 border border-transparent transition-all duration-300 hover:border-2 hover:border-[#4B2E4B] hover:scale-105 hover:shadow-lg"
+            className="relative bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-transparent transition-all duration-300 hover:border-2 hover:border-[#4B2E4B] hover:scale-105 hover:shadow-lg"
           >
             {item.popular && (
               <span className="absolute -top-3 left-6 bg-[#4B2E4B] text-white text-xs px-4 py-1 rounded-full">
@@ -66,22 +66,22 @@ export default function HealthPackages() {
               <Heart className="w-5 h-5 text-gray-300 group-hover:fill-red-500 group-hover:text-red-500 transition" />
             </button>
 
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[#f3eaf2] flex items-center justify-center">
+            <div className="w-12 h-12 md:w-14 md:h-14 mx-auto mb-3 md:mb-4 rounded-lg md:rounded-xl bg-[#f3eaf2] flex items-center justify-center">
               {item.icon}
             </div>
 
-            <h3 className="text-lg font-semibold text-center mb-1">{item.title}</h3>
-            <p className="text-sm text-gray-500 text-center mb-4">{item.tests}</p>
+            <h3 className="text-base md:text-lg font-semibold text-center mb-1">{item.title}</h3>
+            <p className="text-xs md:text-sm text-gray-500 text-center mb-3 md:mb-4">{item.tests}</p>
 
             <div className="text-center mb-2">
-              <span className="text-2xl font-semibold mr-2">{item.price}</span>
-              <span className="text-gray-400 line-through">{item.oldPrice}</span>
+              <span className="text-xl md:text-2xl font-semibold mr-2">{item.price}</span>
+              <span className="text-sm md:text-base text-gray-400 line-through">{item.oldPrice}</span>
             </div>
 
-            <p className="text-green-600 text-sm text-center mb-6">{item.off}</p>
+            <p className="text-green-600 text-xs md:text-sm text-center mb-4 md:mb-6">{item.off}</p>
 
             <button
-              className="w-full bg-[#4B2E4B] text-white py-3 rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105"
+              className="w-full bg-[#4B2E4B] text-white py-2.5 md:py-3 rounded-lg md:rounded-xl flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105 text-sm md:text-base"
             >
               Book Now <ArrowRight size={16} />
             </button>
