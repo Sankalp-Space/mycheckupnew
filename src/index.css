@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Keep a consistent light palette even when browsers try to force dark mode. */
+:root {
+  color-scheme: light;
+  background-color: #ffffff;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #1f2937;
+  }
+}
+
 /* Home Sample Collection custom styles */
 .home-sample-section {
   background: #D8BFD8;
