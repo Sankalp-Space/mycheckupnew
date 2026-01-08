@@ -22,6 +22,66 @@ body {
   color: #1f2937;
 }
 
+/* Aggressive light lock to resist browser-applied darkening. */
+.force-light,
+.force-light *,
+.force-light *::before,
+.force-light *::after {
+  color-scheme: only light;
+  forced-color-adjust: none;
+}
+
+.force-light {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+/* Theme color locks to preserve the intended palette under forced darkening. */
+.force-light .bg-white { background-color: #ffffff !important; }
+.force-light [class~="bg-white/90"] { background-color: rgba(255, 255, 255, 0.9) !important; }
+.force-light [class~="bg-white/5"] { background-color: rgba(255, 255, 255, 0.05) !important; }
+.force-light .bg-gray-100 { background-color: #f3f4f6 !important; }
+.force-light .bg-black { background-color: #000000 !important; }
+.force-light .bg-purple-50 { background-color: #faf5ff !important; }
+.force-light .bg-purple-200 { background-color: #e9d5ff !important; }
+.force-light .bg-purple-400 { background-color: #a855f7 !important; }
+.force-light .bg-purple-600 { background-color: #9333ea !important; }
+.force-light .bg-purple-700 { background-color: #7e22ce !important; }
+.force-light [class~="bg-[#D8BFD8]"] { background-color: #D8BFD8 !important; }
+.force-light [class~="bg-[#EEE4EE]"] { background-color: #EEE4EE !important; }
+.force-light [class~="bg-[#F4ECF4]"] { background-color: #F4ECF4 !important; }
+.force-light [class~="bg-[#FFF3E6]"] { background-color: #FFF3E6 !important; }
+.force-light [class~="bg-[#4B2E4B]"] { background-color: #4B2E4B !important; }
+.force-light [class~="bg-[#3a2337]"] { background-color: #3a2337 !important; }
+.force-light [class~="bg-[#f3eaf2]"] { background-color: #f3eaf2 !important; }
+.force-light [class~="bg-[#F3E5F5]"] { background-color: #F3E5F5 !important; }
+.force-light [class~="bg-[#5A2B4D]"] { background-color: #5A2B4D !important; }
+.force-light [class~="bg-[#cdaec0]"] { background-color: #cdaec0 !important; }
+.force-light [class~="bg-[#f3e9ef]"] { background-color: #f3e9ef !important; }
+
+.force-light .text-white { color: #ffffff !important; }
+.force-light [class~="text-white/80"] { color: rgba(255, 255, 255, 0.8) !important; }
+.force-light .text-gray-300 { color: #d1d5db !important; }
+.force-light .text-gray-400 { color: #9ca3af !important; }
+.force-light .text-gray-500 { color: #6b7280 !important; }
+.force-light .text-gray-600 { color: #4b5563 !important; }
+.force-light .text-gray-700 { color: #374151 !important; }
+.force-light .text-gray-800 { color: #1f2937 !important; }
+.force-light .text-gray-900 { color: #111827 !important; }
+.force-light .text-green-600 { color: #16a34a !important; }
+.force-light .text-red-500 { color: #ef4444 !important; }
+.force-light .text-blue-600 { color: #2563eb !important; }
+.force-light .text-yellow-400 { color: #facc15 !important; }
+.force-light .text-purple-700 { color: #7e22ce !important; }
+.force-light [class~="text-[#0B2B4C]"] { color: #0B2B4C !important; }
+.force-light [class~="text-[#4B2E4B]"] { color: #4B2E4B !important; }
+.force-light [class~="text-[#4b2e4b]"] { color: #4b2e4b !important; }
+.force-light [class~="text-[#4A4A4A]"] { color: #4A4A4A !important; }
+.force-light [class~="text-[#5A2B4D]"] { color: #5A2B4D !important; }
+.force-light [class~="text-[#6b5a64]"] { color: #6b5a64 !important; }
+.force-light .text-theme-dark { color: #2b1e24 !important; }
+.force-light .text-theme-text { color: #6b5a64 !important; }
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: only light;
