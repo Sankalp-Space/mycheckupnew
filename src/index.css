@@ -4,18 +4,27 @@
 
 /* Keep a consistent light palette even when browsers try to force dark mode. */
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   background-color: #ffffff;
+  forced-color-adjust: none;
 }
 
+html,
 body {
+  background-color: #ffffff;
+  color: #1f2937;
+  color-scheme: only light;
+  forced-color-adjust: none;
+}
+
+#root {
   background-color: #ffffff;
   color: #1f2937;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: light;
+    color-scheme: only light;
   }
 
   body {
