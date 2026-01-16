@@ -8,6 +8,10 @@ import {
   Clock,
   Check,
   PhoneCall,
+  FlaskConical,
+  Users,
+  Salad,
+  CalendarDays,
 } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { tests } from "../data/testsData";
@@ -93,40 +97,60 @@ export default function TestDetail() {
                 </span>
               </div>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
-                  <p className="text-xs text-gray-400">INCLUDES</p>
-                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <div className="rounded-xl border border-gray-100 p-3 text-xs text-gray-600">
+                  <div className="flex items-center gap-2 text-[#4B2E4B]">
+                    <FlaskConical size={14} />
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400">Includes</p>
+                  </div>
+                  <p className="mt-1.5 text-sm font-semibold text-[#4B2E4B]">
                     {includedCount} Parameter{includedCount > 1 ? "s" : ""}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
-                  <p className="text-xs text-gray-400">REPORTS (T&C)</p>
-                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                <div className="rounded-xl border border-gray-100 p-3 text-xs text-gray-600">
+                  <div className="flex items-center gap-2 text-[#4B2E4B]">
+                    <Clock size={14} />
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400">Reports (T&amp;C)</p>
+                  </div>
+                  <p className="mt-1.5 text-sm font-semibold text-[#4B2E4B]">
                     {test.reportTime}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
-                  <p className="text-xs text-gray-400">RECOMMENDED GENDER</p>
-                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                <div className="rounded-xl border border-gray-100 p-3 text-xs text-gray-600">
+                  <div className="flex items-center gap-2 text-[#4B2E4B]">
+                    <Users size={14} />
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400">
+                      Recommended Gender
+                    </p>
+                  </div>
+                  <p className="mt-1.5 text-sm font-semibold text-[#4B2E4B]">
                     {test.recommendedGender || "Both"}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
-                  <p className="text-xs text-gray-400">SAMPLE TYPE</p>
-                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                <div className="rounded-xl border border-gray-100 p-3 text-xs text-gray-600">
+                  <div className="flex items-center gap-2 text-[#4B2E4B]">
+                    <Droplet size={14} />
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400">Sample Type</p>
+                  </div>
+                  <p className="mt-1.5 text-sm font-semibold text-[#4B2E4B]">
                     {test.sampleType}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
-                  <p className="text-xs text-gray-400">FASTING</p>
-                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                <div className="rounded-xl border border-gray-100 p-3 text-xs text-gray-600">
+                  <div className="flex items-center gap-2 text-[#4B2E4B]">
+                    <Salad size={14} />
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400">Fasting</p>
+                  </div>
+                  <p className="mt-1.5 text-sm font-semibold text-[#4B2E4B]">
                     {test.fasting}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
-                  <p className="text-xs text-gray-400">AGE</p>
-                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                <div className="rounded-xl border border-gray-100 p-3 text-xs text-gray-600">
+                  <div className="flex items-center gap-2 text-[#4B2E4B]">
+                    <CalendarDays size={14} />
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400">Age</p>
+                  </div>
+                  <p className="mt-1.5 text-sm font-semibold text-[#4B2E4B]">
                     {test.age || "All Ages"}
                   </p>
                 </div>
