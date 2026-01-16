@@ -58,7 +58,6 @@ export default function TestDetail() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <p className="text-sm text-[#6b5a64] mb-4">
             Home <span className="mx-2">›</span> Tests{" "}
-            <span className="mx-2">›</span> Blood Tests{" "}
             <span className="mx-2">›</span> {test.name}
           </p>
           <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr]">

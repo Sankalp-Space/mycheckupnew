@@ -98,11 +98,10 @@ export default function Tests() {
       <section className="bg-gradient-to-br from-[#f4e6f3] via-[#edd6e8] to-[#dcc0da] pb-12 pt-12 md:pb-16">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <p className="text-sm text-[#6b5a64] mb-4">
-            Home <span className="mx-2">›</span> Tests{" "}
-            <span className="mx-2">›</span> Blood Tests
+            Home <span className="mx-2">›</span> Tests
           </p>
           <h1 className="text-3xl md:text-5xl font-semibold text-[#4B2E4B]">
-            Blood Tests
+            Tests
           </h1>
           <p className="mt-2 text-sm md:text-base text-[#6b5a64]">
             Accurate blood tests with home sample collection
