@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   BadgeCheck,
@@ -12,7 +12,7 @@ import {
 import PageShell from "../components/PageShell";
 import { tests } from "../data/testsData";
 
-const tabLabels = [
+const baseTabs = [
   "Overview",
   "What's Included",
   "Preparation",
@@ -28,6 +28,19 @@ export default function TestDetail() {
     () => tests.find((item) => item.slug === slug),
     [slug]
   );
+  const includedItems =
+    test?.whatsIncluded?.items?.length ? test.whatsIncluded.items : test?.includes || [];
+  const includedCount =
+    test?.parametersCount ?? includedItems.length;
+
+  const tabs = useMemo(() => {
+    if (!test) return baseTabs;
+    const nextTabs = [...baseTabs];
+    if (test.testCriteria) {
+      nextTabs.push("Test Criteria");
+    }
+    return nextTabs;
+  }, [test]);
 
   if (!test) {
     return (
@@ -80,9 +93,48 @@ export default function TestDetail() {
                 </span>
               </div>
 
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
+                  <p className="text-xs text-gray-400">INCLUDES</p>
+                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                    {includedCount} Parameter{includedCount > 1 ? "s" : ""}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
+                  <p className="text-xs text-gray-400">REPORTS (T&C)</p>
+                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                    {test.reportTime}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
+                  <p className="text-xs text-gray-400">RECOMMENDED GENDER</p>
+                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                    {test.recommendedGender || "Both"}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
+                  <p className="text-xs text-gray-400">SAMPLE TYPE</p>
+                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                    {test.sampleType}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
+                  <p className="text-xs text-gray-400">FASTING</p>
+                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                    {test.fasting}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 p-4 text-sm text-gray-600">
+                  <p className="text-xs text-gray-400">AGE</p>
+                  <p className="mt-1 font-semibold text-[#4B2E4B]">
+                    {test.age || "All Ages"}
+                  </p>
+                </div>
+              </div>
+
               <div className="mt-6 border-b border-gray-100">
                 <div className="flex flex-wrap gap-6 text-sm text-gray-500">
-                  {tabLabels.map((label) => (
+                  {tabs.map((label) => (
                     <button
                       key={label}
                       onClick={() => setActiveTab(label)}
@@ -126,10 +178,10 @@ export default function TestDetail() {
                 {activeTab === "What's Included" && (
                   <div>
                     <h2 className="text-xl font-semibold text-[#4B2E4B]">
-                      {test.whatsIncluded.listTitle}
+                      {test.whatsIncluded?.listTitle || "Included Parameters"}
                     </h2>
                     <ul className="mt-3 space-y-2">
-                      {test.whatsIncluded.items.map((item) => (
+                      {includedItems.map((item) => (
                         <li key={item} className="flex items-center gap-2">
                           <Check className="text-emerald-500" size={16} />
                           {item}
@@ -178,17 +230,68 @@ export default function TestDetail() {
                     </h2>
                     <div className="mt-4 space-y-4">
                       {test.faqs.map((faq) => (
-                        <div key={faq.question} className="rounded-2xl border border-gray-100 p-4">
+                        <div
+                          key={faq.question}
+                          className="rounded-2xl border border-gray-100 p-4"
+                        >
                           <p className="font-semibold text-[#4B2E4B]">
                             {faq.question}
                           </p>
-                          <p className="mt-2 text-sm text-gray-500">{faq.answer}</p>
+                          <p className="mt-2 text-sm text-gray-500">
+                            {faq.answer}
+                          </p>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
+
+                {activeTab === "Test Criteria" && test.testCriteria && (
+                  <div className="space-y-5">
+                    <div>
+                      <h2 className="text-xl font-semibold text-[#4B2E4B]">
+                        Test Criteria
+                      </h2>
+                      <p className="mt-2 text-sm text-gray-600">
+                        Helps you know your test better.
+                      </p>
+                    </div>
+                    <div className="rounded-2xl bg-[#f7ecf6] p-5">
+                      <h3 className="text-base font-semibold text-[#4B2E4B]">
+                        Who should take this test?
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-600">
+                        {test.testCriteria.whoShouldTake}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-gray-100 p-5">
+                      <h3 className="text-base font-semibold text-[#4B2E4B]">
+                        Why take this test?
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-600">
+                        {test.testCriteria.whyTake}
+                      </p>
+                    </div>
+                    {test.testCriteria.benefits?.length ? (
+                      <div>
+                        <h3 className="text-base font-semibold text-[#4B2E4B]">
+                          Benefits
+                        </h3>
+                        <ul className="mt-3 space-y-2">
+                          {test.testCriteria.benefits.map((item) => (
+                            <li key={item} className="flex items-center gap-2">
+                              <Check className="text-emerald-500" size={16} />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                )}
               </div>
+
+              
             </div>
 
             <div className="lg:sticky lg:top-28 h-fit">
@@ -203,6 +306,13 @@ export default function TestDetail() {
                   Save ₹{test.mrp - test.price} (
                   {Math.round(((test.mrp - test.price) / test.mrp) * 100)}% off)
                 </p>
+
+                {test.vipPrice && (
+                  <p className="mt-3 text-sm text-gray-500">
+                    Or pay <span className="font-semibold">₹{test.vipPrice}</span>{" "}
+                    with VIP
+                  </p>
+                )}
 
                 <div className="mt-5 space-y-3 text-sm text-gray-600">
                   <div className="flex items-center justify-between">
@@ -226,6 +336,10 @@ export default function TestDetail() {
                     </span>
                     <span className="font-medium">{test.fasting}</span>
                   </div>
+                </div>
+
+                <div className="mt-5 rounded-xl bg-[#f0f8ff] px-4 py-3 text-sm text-[#4B2E4B]">
+                  Home Sample Collection Available
                 </div>
 
                 <button className="mt-6 w-full rounded-full bg-[#4B2E4B] px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(75,46,75,0.25)] transition hover:opacity-90">

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { CalendarCheck, Clock, Droplet, Sparkles } from "lucide-react";
 import PageShell from "../components/PageShell";
 import { testPackages } from "../data/testsData";
@@ -56,15 +56,23 @@ export default function Packages() {
                   Save ₹{pack.mrp - pack.price} (
                   {Math.round(((pack.mrp - pack.price) / pack.mrp) * 100)}% off)
                 </p>
+                {pack.vipPrice && (
+                  <p className="mt-1 text-xs text-gray-500">
+                    Or pay <span className="font-semibold">₹{pack.vipPrice}</span>{" "}
+                    with VIP
+                  </p>
+                )}
 
-                <div className="mt-4 space-y-2 text-sm text-gray-600">
-                  {pack.highlights.map((item) => (
-                    <p key={item} className="flex items-center gap-2">
-                      <CalendarCheck size={14} className="text-emerald-500" />
-                      {item}
-                    </p>
-                  ))}
-                </div>
+                {pack.highlights?.length ? (
+                  <div className="mt-4 space-y-2 text-sm text-gray-600">
+                    {pack.highlights.map((item) => (
+                      <p key={item} className="flex items-center gap-2">
+                        <CalendarCheck size={14} className="text-emerald-500" />
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
 
                 <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
                   <span className="flex items-center gap-2">
@@ -75,6 +83,20 @@ export default function Packages() {
                     <Clock size={14} className="text-[#4B2E4B]" />
                     {pack.reportTime}
                   </span>
+                  {pack.parametersCount && (
+                    <span className="flex items-center gap-2">
+                      <CalendarCheck size={14} className="text-emerald-500" />
+                      {pack.parametersCount} Parameters
+                    </span>
+                  )}
+                  {pack.fasting && (
+                    <span className="flex items-center gap-2">
+                      Fasting: {pack.fasting}
+                    </span>
+                  )}
+                  {pack.age && (
+                    <span className="flex items-center gap-2">Age: {pack.age}</span>
+                  )}
                 </div>
 
                 <div className="mt-6 flex flex-col gap-3">
@@ -82,10 +104,10 @@ export default function Packages() {
                     Book Package
                   </button>
                   <Link
-                    to="/tests"
+                    to={`/packages/${pack.slug}`}
                     className="rounded-full border border-[#4B2E4B] px-4 py-2.5 text-center text-sm font-semibold text-[#4B2E4B] transition hover:bg-[#f7ecf6]"
                   >
-                    Explore Tests
+                    View Details
                   </Link>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Check,
@@ -34,9 +34,7 @@ export default function Tests() {
 
     if (searchValue.trim()) {
       const query = searchValue.toLowerCase();
-      list = list.filter((test) =>
-        test.name.toLowerCase().includes(query)
-      );
+      list = list.filter((test) => test.name.toLowerCase().includes(query));
     }
 
     if (sampleTypes.length) {
@@ -252,100 +250,107 @@ export default function Tests() {
             </div>
 
             <div className="mt-5 space-y-5">
-              {filteredTests.map((test) => (
-                <div
-                  key={test.slug}
-                  className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm md:p-6"
-                >
-                  <div className="grid gap-6 md:grid-cols-[1.6fr_1fr]">
-                    <div>
-                      <div className="flex flex-wrap gap-2">
-                        {test.tags?.map((tag) => (
-                          <span
-                            key={tag}
-                            className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${
-                              tag === "Most Booked"
-                                ? "bg-emerald-100 text-emerald-600"
-                                : tag === "Best Value"
-                                ? "bg-[#5A2B4D] text-white"
-                                : "bg-orange-100 text-orange-600"
-                            }`}
-                          >
-                            <Sparkles size={12} />
-                            {tag}
+              {filteredTests.map((test) => {
+                const includedItems =
+                  test.whatsIncluded?.items?.length
+                    ? test.whatsIncluded.items
+                    : test.includes || [];
+                const includedCount = test.parametersCount ?? includedItems.length;
+                return (
+                  <div
+                    key={test.slug}
+                    className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm md:p-6"
+                  >
+                    <div className="grid gap-6 md:grid-cols-[1.6fr_1fr]">
+                      <div>
+                        <div className="flex flex-wrap gap-2">
+                          {test.tags?.map((tag) => (
+                            <span
+                              key={tag}
+                              className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${
+                                tag === "Most Booked"
+                                  ? "bg-emerald-100 text-emerald-600"
+                                  : tag === "Best Value"
+                                  ? "bg-[#5A2B4D] text-white"
+                                  : "bg-orange-100 text-orange-600"
+                              }`}
+                            >
+                              <Sparkles size={12} />
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        <h3 className="mt-4 text-xl font-semibold text-[#4B2E4B]">
+                          {test.name}
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">
+                          Includes ({includedCount} parameters):
+                        </p>
+
+                        <ul className="mt-3 grid gap-2 text-sm text-gray-600 md:grid-cols-2">
+                          {includedItems.slice(0, 4).map((item) => (
+                            <li key={item} className="flex items-center gap-2">
+                              <Check className="text-emerald-500" size={16} />
+                              {item}
+                            </li>
+                          ))}
+                          {includedItems.length > 4 && (
+                            <li className="text-xs text-gray-400">
+                              {includedItems.length - 4} more parameters
+                            </li>
+                          )}
+                        </ul>
+
+                        <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-500">
+                          <span className="flex items-center gap-2">
+                            <Droplet size={14} className="text-pink-500" />
+                            {test.sampleType}
                           </span>
-                        ))}
-                      </div>
-
-                      <h3 className="mt-4 text-xl font-semibold text-[#4B2E4B]">
-                        {test.name}
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        Includes ({test.parametersCount} parameters):
-                      </p>
-
-                      <ul className="mt-3 grid gap-2 text-sm text-gray-600 md:grid-cols-2">
-                        {test.includes.slice(0, 4).map((item) => (
-                          <li key={item} className="flex items-center gap-2">
-                            <Check className="text-emerald-500" size={16} />
-                            {item}
-                          </li>
-                        ))}
-                        {test.includes.length > 4 && (
-                          <li className="text-xs text-gray-400">
-                            {test.includes.length - 4} more parameters
-                          </li>
-                        )}
-                      </ul>
-
-                      <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-500">
-                        <span className="flex items-center gap-2">
-                          <Droplet size={14} className="text-pink-500" />
-                          {test.sampleType}
-                        </span>
-                        <span className="flex items-center gap-2">
-                          <Clock size={14} className="text-[#4B2E4B]" />
-                          Report in {test.reportTime}
-                        </span>
-                        <span className="flex items-center gap-2">
-                          <BadgeCheck size={14} className="text-emerald-500" />
-                          {getFastingFlag(test.fasting)
-                            ? "Fasting required"
-                            : "No fasting"}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3 md:items-end md:justify-between">
-                      <div className="md:text-right">
-                        <div className="text-2xl font-semibold text-[#4B2E4B]">
-                          ₹{test.price}
-                          <span className="ml-2 text-sm text-gray-400 line-through">
-                            ₹{test.mrp}
+                          <span className="flex items-center gap-2">
+                            <Clock size={14} className="text-[#4B2E4B]" />
+                            Report in {test.reportTime}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <BadgeCheck size={14} className="text-emerald-500" />
+                            {getFastingFlag(test.fasting)
+                              ? "Fasting required"
+                              : "No fasting"}
                           </span>
                         </div>
-                        <p className="mt-1 text-sm text-emerald-600">
-                          Save ₹{test.mrp - test.price} (
-                          {Math.round(((test.mrp - test.price) / test.mrp) * 100)}
-                          % off)
-                        </p>
                       </div>
 
-                      <div className="flex w-full flex-col gap-3 md:max-w-[200px]">
-                        <button className="rounded-full bg-[#4B2E4B] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(75,46,75,0.25)] transition hover:opacity-90">
-                          Book Test
-                        </button>
-                        <Link
-                          to={`/tests/${test.slug}`}
-                          className="rounded-full border border-[#4B2E4B] px-4 py-2.5 text-center text-sm font-semibold text-[#4B2E4B] transition hover:bg-[#f7ecf6]"
-                        >
-                          View Details
-                        </Link>
+                      <div className="flex flex-col gap-3 md:items-end md:justify-between">
+                        <div className="md:text-right">
+                          <div className="text-2xl font-semibold text-[#4B2E4B]">
+                            ₹{test.price}
+                            <span className="ml-2 text-sm text-gray-400 line-through">
+                              ₹{test.mrp}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-sm text-emerald-600">
+                            Save ₹{test.mrp - test.price} (
+                            {Math.round(((test.mrp - test.price) / test.mrp) * 100)}
+                            % off)
+                          </p>
+                        </div>
+
+                        <div className="flex w-full flex-col gap-3 md:max-w-[200px]">
+                          <button className="rounded-full bg-[#4B2E4B] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(75,46,75,0.25)] transition hover:opacity-90">
+                            Book Test
+                          </button>
+                          <Link
+                            to={`/tests/${test.slug}`}
+                            className="rounded-full border border-[#4B2E4B] px-4 py-2.5 text-center text-sm font-semibold text-[#4B2E4B] transition hover:bg-[#f7ecf6]"
+                          >
+                            View Details
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               {filteredTests.length === 0 && (
                 <div className="rounded-2xl border border-dashed border-gray-200 p-8 text-center text-sm text-gray-500">
