@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Phone, ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import NavItem from "./NavItem";
 
 const navLinks = [
-  "Home",
-  "Test Packages",
-  "Xrays & Scans",
-  "Banking Details",
-  "Help & Support",
-  "More",
+  { label: "Home", to: "/" },
+  { label: "Lab Tests", to: "/tests" },
+  { label: "Health Checkups", to: "/packages" },
+  { label: "About Us", to: "#" },
+  { label: "Contact", to: "#" },
 ];
 
 const moreLinks = [
@@ -44,16 +44,16 @@ export default function Navbar() {
       {/* Main navbar */}
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4">
         {/* Logo */}
-        <div className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#4B2E4B] text-white flex items-center justify-center text-lg md:text-xl font-bold
+          <Link to="/" className="flex items-center gap-3 cursor-pointer group">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#4B2E4B] text-white flex items-center justify-center text-lg md:text-xl font-bold
                           transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-105">
-            M
-          </div>
-          <div>
-            <p className="text-lg md:text-xl font-bold">MYCheckup</p>
-            <p className="text-[10px] md:text-xs text-gray-500">HEALTH AT HOME</p>
-          </div>
-        </div>
+              M
+            </div>
+            <div>
+              <p className="text-lg md:text-xl font-bold">MYCheckup</p>
+              <p className="text-[10px] md:text-xs text-gray-500">HEALTH AT HOME</p>
+            </div>
+          </Link>
 
         {/* Mobile Menu Button */}
         <button 
@@ -65,10 +65,11 @@ export default function Navbar() {
 
         {/* Desktop Nav links */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.slice(0, -1).map((link) => (
+          {navLinks.map((link) => (
             <NavItem
-              key={link}
-              label={link}
+              key={link.label}
+              label={link.label}
+              to={link.to}
             />
           ))}
           {/* More dropdown */}
@@ -116,9 +117,12 @@ export default function Navbar() {
           <button className="px-5 py-2 border border-[#4B2E4B] rounded-full text-[#4B2E4B] hover:bg-[#4B2E4B] hover:text-white transition">
             Login
           </button>
-          <button className="px-6 py-2 rounded-full bg-[#4B2E4B] text-white hover:opacity-90 transition">
+          <Link
+            to="/tests"
+            className="px-6 py-2 rounded-full bg-[#4B2E4B] text-white hover:opacity-90 transition"
+          >
             Book Test Now
-          </button>
+          </Link>
         </div>
       </nav>
 
@@ -132,14 +136,14 @@ export default function Navbar() {
             className="md:hidden bg-white border-t overflow-hidden"
           >
             <div className="px-4 py-4 space-y-3">
-              {navLinks.slice(0, -1).map((link) => (
-                <a 
-                  key={link}
-                  href="#" 
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.to}
                   className="block py-2 px-4 text-gray-700 hover:bg-[#F3E5F5] hover:text-[#4B2E4B] rounded-lg transition"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
               
               {/* Mobile More Section */}
@@ -172,9 +176,12 @@ export default function Navbar() {
                 <button className="w-full px-5 py-2 border border-[#4B2E4B] rounded-full text-[#4B2E4B] hover:bg-[#4B2E4B] hover:text-white transition">
                   Login
                 </button>
-                <button className="w-full px-6 py-2 rounded-full bg-[#4B2E4B] text-white hover:opacity-90 transition">
+                <Link
+                  to="/tests"
+                  className="w-full px-6 py-2 rounded-full bg-[#4B2E4B] text-white hover:opacity-90 transition text-center"
+                >
                   Book Test Now
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>

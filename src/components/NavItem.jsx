@@ -1,9 +1,13 @@
-function NavItem({ label }) {
+import { Link } from "react-router-dom";
+
+function NavItem({ label, to }) {
   return (
     <li
       className="relative cursor-pointer text-gray-700 hover:text-[#4B2E4B] transition group"
     >
-      <span className="pb-2 inline-block">{label}</span>
+      <Link to={to} className="pb-2 inline-block">
+        {label}
+      </Link>
 
       {/* Animated underline */}
       <span
