@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 const Home = lazy(() => import("./pages/Home"));
 const Tests = lazy(() => import("./pages/Tests"));
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tests" element={<Tests />} />
-          <Route path="/packages" element={<Packages />} />
+          <Route path="/packages" element={<Navigate to="/tests" replace />} />
           <Route path="/packages/:slug" element={<PackageDetail />} />
           <Route path="/tests/:slug" element={<TestDetail />} />
           <Route path="*" element={<Home />} />

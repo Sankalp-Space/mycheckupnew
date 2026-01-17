@@ -6,8 +6,8 @@ import NavItem from "./NavItem";
 
 const navLinks = [
   { label: "Home", to: "/" },
-  { label: "Lab Tests", to: "/tests" },
-  { label: "Health Checkups", to: "/packages" },
+  { label: "Tests & Packages", to: "/tests" },
+  { label: "Xrays & Scans", to: "#" },
   { label: "About Us", to: "#" },
   { label: "Contact", to: "#" },
 ];
@@ -114,7 +114,7 @@ export default function Navbar() {
 
         {/* Buttons */}
         <div className="hidden md:flex gap-4">
-          <button className="px-5 py-2 border border-[#4B2E4B] rounded-full text-[#4B2E4B] hover:bg-[#4B2E4B] hover:text-white transition">
+          <button className="px-5 py-2 border border-[#4B2E4B] rounded-full text-[#4B2E4B] bg-white text-sm font-semibold hover:bg-[#4B2E4B] hover:text-white transition">
             Login
           </button>
           <Link
@@ -172,16 +172,18 @@ export default function Navbar() {
               </div>
 
               {/* Mobile Buttons */}
-              <div className="pt-4 space-y-2 border-t">
-                <button className="w-full px-5 py-2 border border-[#4B2E4B] rounded-full text-[#4B2E4B] hover:bg-[#4B2E4B] hover:text-white transition">
+              <div className="pt-4 border-t">
+                <div className="grid grid-cols-2 gap-3">
+                  <button className="w-full px-4 py-2.5 border border-[#4B2E4B] rounded-full text-[#4B2E4B] bg-white text-xs font-semibold hover:bg-[#4B2E4B] hover:text-white transition">
                   Login
-                </button>
-                <Link
-                  to="/tests"
-                  className="w-full px-6 py-2 rounded-full bg-[#4B2E4B] text-white hover:opacity-90 transition text-center"
-                >
-                  Book Test Now
-                </Link>
+                  </button>
+                  <Link
+                    to="/tests"
+                    className="w-full px-4 py-2.5 rounded-full bg-[#4B2E4B] text-white text-xs font-semibold hover:opacity-90 transition text-center"
+                  >
+                    Book Test Now
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>

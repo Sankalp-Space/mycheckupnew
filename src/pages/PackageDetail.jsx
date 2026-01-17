@@ -264,14 +264,7 @@ export default function PackageDetail() {
                 )}
               </div>
 
-              <div className="mt-8 rounded-3xl bg-[#fdf0f5] px-6 py-6 text-center">
-                <p className="text-sm font-semibold text-[#4B2E4B]">
-                  Unlock special discount on this package
-                </p>
-                <button className="mt-4 rounded-full border border-[#4B2E4B] px-6 py-2 text-sm font-semibold text-[#4B2E4B] transition hover:bg-[#f7ecf6]">
-                  Login to Unlock
-                </button>
-              </div>
+              
             </div>
 
             <div className="lg:sticky lg:top-28 h-fit">
