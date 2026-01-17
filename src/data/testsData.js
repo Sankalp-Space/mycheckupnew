@@ -1,4 +1,4 @@
-export const testPackages = [
+﻿export const testPackages = [
   {
     slug: "winter-special-offer-with-free-cardiac-screening",
     name: "Winter Special offer with Free Cardiac Screening in Delhi",
@@ -7,9 +7,9 @@ export const testPackages = [
     mrp: 7320,
     vipPrice: 1799,
     reportTime: "13 hours",
-    sampleType: "Urine, Blood",
-    fasting: "10-12 hours",
-    age: "Above 5 Years",
+    sampleType: "Blood, Urine",
+    fasting: "10-12 Hours",
+    age: "5+ Years",
     recommendedGender: "Both",
     parametersCount: 96,
     tags: ["Most Booked"],
@@ -38,7 +38,7 @@ export const testPackages = [
       {
         title: "Complete Blood Count (CBC)",
         description:
-          "A CBC test evaluates the overall health of your blood by measuring components like red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. It helps detect a wide range of conditions, including infections, anemia, and blood disorders. This test usually doesn’t require fasting.",
+          "A CBC test evaluates the overall health of your blood by measuring components like red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. It helps detect a wide range of conditions, including infections, anemia, and blood disorders. This test usually doesnâ€™t require fasting.",
         parametersCount: 26,
         parameters: [
           "Absolute Basophils Count, Blood",
@@ -79,7 +79,7 @@ export const testPackages = [
       {
         title: "Glucose Fasting",
         description:
-          "This test measures your blood sugar levels after an overnight fast (10-12 hours). It helps diagnose diabetes, prediabetes, and hypoglycemia. Fasting ensures accurate results, giving a clear picture of your baseline glucose levels.",
+          "This test measures your blood sugar levels after an overnight fast (10-12 Hours). It helps diagnose diabetes, prediabetes, and hypoglycemia. Fasting ensures accurate results, giving a clear picture of your baseline glucose levels.",
         parametersCount: 1,
         parameters: ["Glucose Fasting"],
       },
@@ -93,7 +93,7 @@ export const testPackages = [
       {
         title: "High Sensitivity C-Reactive Protein (Hs-CRP)",
         description:
-          "The hsCRP test measures very small amounts of C-reactive protein, a marker of inflammation in the body. It’s primarily used to assess heart disease risk, as higher hsCRP levels can indicate inflammation in blood vessels linked to cardiovascular issues.",
+          "The hsCRP test measures very small amounts of C-reactive protein, a marker of inflammation in the body. Itâ€™s primarily used to assess heart disease risk, as higher hsCRP levels can indicate inflammation in blood vessels linked to cardiovascular issues.",
         parametersCount: 1,
         parameters: ["HsCRP (High Sensitivity C Reactive Protein)"],
       },
@@ -234,8 +234,8 @@ export const testPackages = [
     vipPrice: 1349,
     reportTime: "13 hours",
     sampleType: "Blood, Urine",
-    fasting: "10 to 12 Hrs",
-    age: "Above 5 Years",
+    fasting: "10-12 Hours",
+    age: "5+ Years",
     recommendedGender: "Both",
     parametersCount: 94,
     categories: [
@@ -254,7 +254,7 @@ export const testPackages = [
       {
         title: "Complete Blood Count (CBC)",
         description:
-          "A CBC test evaluates the overall health of your blood by measuring components like red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. It helps detect a wide range of conditions, including infections, anemia, and blood disorders. This test usually doesn’t require fasting.",
+          "A CBC test evaluates the overall health of your blood by measuring components like red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. It helps detect a wide range of conditions, including infections, anemia, and blood disorders. This test usually doesnâ€™t require fasting.",
         parametersCount: 26,
         parameters: [
           "Absolute Basophils Count, Blood",
@@ -295,7 +295,7 @@ export const testPackages = [
       {
         title: "Glucose Fasting",
         description:
-          "This test measures your blood sugar levels after an overnight fast (10-12 hours). It helps diagnose diabetes, prediabetes, and hypoglycemia. Fasting ensures accurate results, giving a clear picture of your baseline glucose levels.",
+          "This test measures your blood sugar levels after an overnight fast (10-12 Hours). It helps diagnose diabetes, prediabetes, and hypoglycemia. Fasting ensures accurate results, giving a clear picture of your baseline glucose levels.",
         parametersCount: 1,
         parameters: ["Glucose Fasting"],
       },
@@ -436,8 +436,8 @@ export const testPackages = [
     vipPrice: 1619,
     reportTime: "13 hours",
     sampleType: "Blood, Urine",
-    fasting: "10 to 12 Hours",
-    age: "Above 5 Years",
+    fasting: "10-12 Hours",
+    age: "5+ Years",
     recommendedGender: "Both",
     parametersCount: 96,
     tags: ["Doctor Recommended"],
@@ -476,7 +476,7 @@ export const testPackages = [
       {
         title: "Complete Blood Count (CBC)",
         description:
-          "A CBC test evaluates the overall health of your blood by measuring components like red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. It helps detect a wide range of conditions, including infections, anemia, and blood disorders. This test usually doesn’t require fasting.",
+          "A CBC test evaluates the overall health of your blood by measuring components like red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. It helps detect a wide range of conditions, including infections, anemia, and blood disorders. This test usually doesnâ€™t require fasting.",
         parametersCount: 26,
         parameters: [
           "Absolute Basophils Count, Blood",
@@ -517,7 +517,7 @@ export const testPackages = [
       {
         title: "Glucose Fasting",
         description:
-          "This test measures your blood sugar levels after an overnight fast (10-12 hours). It helps diagnose diabetes, prediabetes, and hypoglycemia. Fasting ensures accurate results, giving a clear picture of your baseline glucose levels.",
+          "This test measures your blood sugar levels after an overnight fast (10-12 Hours). It helps diagnose diabetes, prediabetes, and hypoglycemia. Fasting ensures accurate results, giving a clear picture of your baseline glucose levels.",
         parametersCount: 1,
         parameters: ["Glucose Fasting"],
       },
@@ -531,7 +531,7 @@ export const testPackages = [
       {
         title: "High Sensitivity C-Reactive Protein (Hs-CRP)",
         description:
-          "The hsCRP test measures very small amounts of C-reactive protein, a marker of inflammation in the body. It’s primarily used to assess heart disease risk, as higher hsCRP levels can indicate inflammation in blood vessels linked to cardiovascular issues.",
+          "The hsCRP test measures very small amounts of C-reactive protein, a marker of inflammation in the body. Itâ€™s primarily used to assess heart disease risk, as higher hsCRP levels can indicate inflammation in blood vessels linked to cardiovascular issues.",
         parametersCount: 1,
         parameters: ["HsCRP (High Sensitivity C Reactive Protein)"],
       },
@@ -683,7 +683,7 @@ export const tests = [
     includes: ["T3, Total Tri Iodothyronine", "T4, Total Thyroxine", "TSH Ultra - sensitive"],
     overview: {
       about:
-        "The Thyroid Profile Total test measures key thyroid hormones, including Total T3, Total T4, and Thyroid Stimulating Hormone (TSH), in the blood. This panel assesses thyroid gland function, helping diagnose conditions such as hypothyroidism (underactive thyroid) and hyperthyroidism (overactive thyroid). TSH, produced by the pituitary gland, regulates thyroid hormone production by the thyroid. Total T3 and T4 hormone levels indicate the amount of thyroid hormone circulating in the body. The test helps monitor treatment effectiveness for thyroid disorders and detect thyroid dysfunction that can cause symptoms such as fatigue, weight changes, and mood disturbances. It’s a vital diagnostic tool for metabolic and hormonal health. A certified phlebotomist draws blood, and patients typically don’t need to fast. Redcliffe Labs provides convenient home sample collection and timely, accurate reports to guide your healthcare journey.",
+        "The Thyroid Profile Total test measures key thyroid hormones, including Total T3, Total T4, and Thyroid Stimulating Hormone (TSH), in the blood. This panel assesses thyroid gland function, helping diagnose conditions such as hypothyroidism (underactive thyroid) and hyperthyroidism (overactive thyroid). TSH, produced by the pituitary gland, regulates thyroid hormone production by the thyroid. Total T3 and T4 hormone levels indicate the amount of thyroid hormone circulating in the body. The test helps monitor treatment effectiveness for thyroid disorders and detect thyroid dysfunction that can cause symptoms such as fatigue, weight changes, and mood disturbances. Itâ€™s a vital diagnostic tool for metabolic and hormonal health. A certified phlebotomist draws blood, and patients typically donâ€™t need to fast. Redcliffe Labs provides convenient home sample collection and timely, accurate reports to guide your healthcare journey.",
       whyImportant: [
         "Assesses thyroid gland function for metabolic and hormonal health",
         "Helps detect hypothyroidism and hyperthyroidism",
@@ -736,7 +736,7 @@ export const tests = [
     includes: ["TSH"],
     overview: {
       about:
-        "The TSH 3rd Generation Test is a highly sensitive blood test measuring thyroid-stimulating hormone (TSH) levels. TSH regulates thyroid hormone production by the thyroid gland. Elevated or suppressed TSH levels indicate hypothyroidism or hyperthyroidism. This advanced test can detect subtle thyroid dysfunction earlier than previous generations, aiding diagnosis and treatment monitoring. It’s essential for evaluating thyroid disorders, supporting metabolic and hormonal health. The test is performed on a blood sample without special preparation, providing precise insights into hormone regulation. Redcliffe Labs offers expert home sample collection with rapid, reliable reporting for effective thyroid health management.",
+        "The TSH 3rd Generation Test is a highly sensitive blood test measuring thyroid-stimulating hormone (TSH) levels. TSH regulates thyroid hormone production by the thyroid gland. Elevated or suppressed TSH levels indicate hypothyroidism or hyperthyroidism. This advanced test can detect subtle thyroid dysfunction earlier than previous generations, aiding diagnosis and treatment monitoring. Itâ€™s essential for evaluating thyroid disorders, supporting metabolic and hormonal health. The test is performed on a blood sample without special preparation, providing precise insights into hormone regulation. Redcliffe Labs offers expert home sample collection with rapid, reliable reporting for effective thyroid health management.",
       whyImportant: [
         "Helps diagnose underactive or overactive thyroid gland",
         "Detects thyroid-related diseases before symptoms appear",
@@ -926,7 +926,7 @@ export const tests = [
     includes: ["AMH (Anti Mullerian hormone test)"],
     overview: {
       about:
-        "The Anti-Mullerian Hormone (AMH) Test is a key fertility test that helps assess ovarian reserve, or the number of eggs a woman has available for conception. AMH levels offer insights into a woman’s reproductive lifespan and fertility potential, making it an essential test for those planning pregnancy or undergoing fertility treatments like IVF. Low AMH levels may indicate reduced ovarian reserve, while high levels can be linked with conditions such as polycystic ovary syndrome (PCOS). The test involves a simple blood draw and can be done at any time during the menstrual cycle. Besides fertility assessment, AMH testing also helps evaluate the onset of menopause, monitor ovarian function during cancer treatment, or track response to hormone therapy. Understanding AMH levels allows doctors to create personalized fertility plans and guide women in making informed decisions about family planning and reproductive health.",
+        "The Anti-Mullerian Hormone (AMH) Test is a key fertility test that helps assess ovarian reserve, or the number of eggs a woman has available for conception. AMH levels offer insights into a womanâ€™s reproductive lifespan and fertility potential, making it an essential test for those planning pregnancy or undergoing fertility treatments like IVF. Low AMH levels may indicate reduced ovarian reserve, while high levels can be linked with conditions such as polycystic ovary syndrome (PCOS). The test involves a simple blood draw and can be done at any time during the menstrual cycle. Besides fertility assessment, AMH testing also helps evaluate the onset of menopause, monitor ovarian function during cancer treatment, or track response to hormone therapy. Understanding AMH levels allows doctors to create personalized fertility plans and guide women in making informed decisions about family planning and reproductive health.",
       whyImportant: [
         "Assesses ovarian reserve and fertility potential",
         "Helps detect PCOS and hormonal imbalance",
@@ -975,3 +975,4 @@ export const tests = [
     },
   },
 ];
+

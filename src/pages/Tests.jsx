@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Check,
@@ -14,8 +14,18 @@ import CallBackBanner from "../components/CallBackBanner";
 import { tests, testPackages } from "../data/testsData";
 
 const sampleTypeOptions = ["Blood", "Urine", "Saliva"];
-const reportTimeOptions = ["Same day", "12 hours", "13 hours", "24 hours", "48 hours", "3-5 days"];
+const reportTimeOptions = [
+  "Same day",
+  "12 hours",
+  "13 hours",
+  "14 hours",
+  "18 hours",
+  "24 hours",
+  "48 hours",
+  "3-5 days",
+];
 const popularOptions = ["Most Booked", "Doctor Recommended", "Best Value", "Top Selling"];
+const PAGE_SIZE = 6;
 
 const normalizeSampleTypes = (value) =>
   value
@@ -25,7 +35,6 @@ const normalizeSampleTypes = (value) =>
 
 const getFastingFlag = (fasting) =>
   typeof fasting === "string" &&
-  !fasting.toLowerCase().includes("not required") &&
   !fasting.toLowerCase().includes("not required");
 
 export default function Tests() {
@@ -37,6 +46,7 @@ export default function Tests() {
   const [sortBy, setSortBy] = useState("recommended");
   const [showBanner, setShowBanner] = useState(true);
   const [listScope, setListScope] = useState("all");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const allItems = useMemo(() => {
     const testItems = tests.map((item) => ({
@@ -106,6 +116,12 @@ export default function Tests() {
     sortBy,
   ]);
 
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [listScope, searchValue, sampleTypes, fastingRequired, reportTimes, popularTags, sortBy]);
+
+  const visibleItems = filteredItems.slice(0, visibleCount);
+
   const toggleValue = (value, list, setter) => {
     if (list.includes(value)) {
       setter(list.filter((item) => item !== value));
@@ -122,12 +138,18 @@ export default function Tests() {
     setPopularTags([]);
   };
 
+  const scopeOptions = [
+    { id: "all", label: "All", count: tests.length + testPackages.length },
+    { id: "test", label: "Tests", count: tests.length },
+    { id: "package", label: "Packages", count: testPackages.length },
+  ];
+
   return (
     <PageShell>
       <section className="bg-gradient-to-br from-[#f4e6f3] via-[#edd6e8] to-[#dcc0da] pb-12 pt-12 md:pb-16">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <p className="text-sm text-[#6b5a64] mb-4">
-            Home <span className="mx-2">›</span> Tests & Packages
+            Home <span className="mx-2">&gt;</span> Tests & Packages
           </p>
           <h1 className="text-3xl md:text-5xl font-semibold text-[#4B2E4B]">
             Tests & Health Packages
@@ -148,11 +170,7 @@ export default function Tests() {
               />
             </div>
             <div className="flex flex-wrap gap-2">
-              {[
-                { id: "all", label: "All" },
-                { id: "test", label: "Tests" },
-                { id: "package", label: "Packages" },
-              ].map((item) => (
+              {scopeOptions.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setListScope(item.id)}
@@ -162,7 +180,7 @@ export default function Tests() {
                       : "bg-white border border-[#e8d9e8] text-[#4B2E4B]"
                   }`}
                 >
-                  {item.label}
+                  {item.label} ({item.count})
                 </button>
               ))}
             </div>
@@ -296,15 +314,17 @@ export default function Tests() {
             </div>
 
             <div className="mt-5 space-y-5">
-              {filteredItems.map((item) => {
+              {visibleItems.map((item) => {
                 const isPackage = item.itemType === "package";
                 const includedItems = isPackage
                   ? item.highlights || []
                   : item.whatsIncluded?.items?.length
                   ? item.whatsIncluded.items
                   : item.includes || [];
-                const includedCount =
-                  item.parametersCount ?? includedItems.length;
+                const listCount = includedItems.length;
+                const parameterCount = isPackage
+                  ? item.parametersCount ?? 0
+                  : item.parametersCount ?? includedItems.length;
 
                 return (
                   <div
@@ -314,9 +334,13 @@ export default function Tests() {
                     <div className="grid gap-6 md:grid-cols-[1.6fr_1fr]">
                       <div>
                         <div className="flex flex-wrap gap-2">
-                          {isPackage && (
+                          {isPackage ? (
                             <span className="inline-flex items-center gap-2 rounded-full bg-[#ede2ef] px-3 py-1 text-xs font-semibold text-[#4B2E4B]">
                               <Layers size={12} /> Package
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-2 rounded-full bg-[#e7f0ff] px-3 py-1 text-xs font-semibold text-[#2b4b6b]">
+                              <BadgeCheck size={12} /> Test
                             </span>
                           )}
                           {item.tags?.map((tag) => (
@@ -340,7 +364,8 @@ export default function Tests() {
                           {item.name}
                         </h3>
                         <p className="mt-1 text-sm text-gray-500">
-                          Includes ({includedCount} parameters):
+                          {isPackage ? "Highlights" : "Includes"} ({listCount}{" "}
+                          {isPackage ? "items" : "parameters"}):
                         </p>
 
                         <ul className="mt-3 grid gap-2 text-sm text-gray-600 md:grid-cols-2">
@@ -352,7 +377,7 @@ export default function Tests() {
                           ))}
                           {includedItems.length > 4 && (
                             <li className="text-xs text-gray-400">
-                              {includedItems.length - 4} more parameters
+                              {includedItems.length - 4} more {isPackage ? "items" : "parameters"}
                             </li>
                           )}
                         </ul>
@@ -368,13 +393,13 @@ export default function Tests() {
                           </span>
                           <span className="flex items-center gap-2">
                             <BadgeCheck size={14} className="text-emerald-500" />
-                            {includedCount} Parameters
+                            {parameterCount} Parameters
                           </span>
                         </div>
 
                         <div className="mt-2 text-xs text-gray-500">
                           {item.fasting ? `Fasting: ${item.fasting}` : null}
-                          {item.age ? `  •  Age: ${item.age}` : null}
+                          {item.age ? ` | Age: ${item.age}` : null}
                         </div>
                       </div>
 
@@ -418,6 +443,17 @@ export default function Tests() {
               {filteredItems.length === 0 && (
                 <div className="rounded-2xl border border-dashed border-gray-200 p-8 text-center text-sm text-gray-500">
                   No tests or packages match your filters. Try clearing some filters.
+                </div>
+              )}
+
+              {filteredItems.length > visibleItems.length && (
+                <div className="flex justify-center pt-4">
+                  <button
+                    onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
+                    className="rounded-full border border-[#4B2E4B] px-6 py-2 text-sm font-semibold text-[#4B2E4B] transition hover:bg-[#f7ecf6]"
+                  >
+                    Load More
+                  </button>
                 </div>
               )}
             </div>
